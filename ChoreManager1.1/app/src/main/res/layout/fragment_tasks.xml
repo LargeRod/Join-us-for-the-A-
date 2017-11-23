@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="joinusforthea.choreproject.choremanager11.TasksFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:id="@+id/newTaskLayout"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:clickable="true">
+
+            <ImageButton
+                android:id="@+id/newTaskButton"
+                android:layout_width="50dp"
+                android:layout_height="fill_parent"
+                android:backgroundTint="@color/CLEAR"
+                android:onClick="onClick"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/solid_add" />
+
+            <TextView
+                android:id="@+id/newTaskText"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="New Task" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="0dp" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:foregroundGravity="right"
+            android:gravity="right|center"
+            android:paddingRight="15dp"
+            android:text="Only my tasks    "
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/taskList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="bottom"
+        android:layout_weight="1" />
+
+</LinearLayout>

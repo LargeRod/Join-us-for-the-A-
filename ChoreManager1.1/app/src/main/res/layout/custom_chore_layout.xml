@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/choreItemLayout"
+    android:layout_width="match_parent"
+    android:layout_height="75dp">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@color/CLEAR"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/hollow_add" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/choreNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:text="Chore Title Goes Here"
+            android:textAppearance="@android:style/TextAppearance" />
+
+        <TextView
+            android:id="@+id/choreFootnoteTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:text="Chore Footnote Goes Here" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="50dp"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
