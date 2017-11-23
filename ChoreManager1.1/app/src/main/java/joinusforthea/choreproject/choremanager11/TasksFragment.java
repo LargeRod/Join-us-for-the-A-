@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +30,10 @@ public class TasksFragment extends Fragment {
         TextView textView = new TextView(getActivity());
         textView.setText("Task Fragment");
 
-        ListView listView= (ListView) container.findViewById(R.id.taskList);
+        // doenst work with fragments
+       /* ListView listView= (ListView) container.findViewById(R.id.taskList);
         ChoreCustomAdapter adapter = new ChoreCustomAdapter(this, choreList);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
 
         return textView;
     }

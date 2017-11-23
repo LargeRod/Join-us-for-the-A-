@@ -16,7 +16,7 @@ public class ChoreCustomAdapter extends ArrayAdapter<String> {
     private final Context context;
     private final String[] myChores;
 
-    public ChoreCustomAdapter(TasksFragment context, String[] choreList) {
+    public ChoreCustomAdapter(Context context, String[] choreList) {
         super(context, R.layout.custom_chore_layout, choreList);
         this.context = context;
         this.myChores = choreList;
