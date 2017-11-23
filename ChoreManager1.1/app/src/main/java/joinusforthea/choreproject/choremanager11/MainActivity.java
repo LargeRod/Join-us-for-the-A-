@@ -151,6 +151,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_cupboard_and_fridge) {
 
         } else if (id == R.id.nav_broom_closet) {
+            Intent intent = new Intent(MainActivity.this, BroomCloset.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
