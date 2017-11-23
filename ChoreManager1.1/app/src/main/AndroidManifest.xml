@@ -29,10 +29,15 @@
         </activity>
         <activity
             android:name=".BroomCloset"
-            android:label="broomCloset"
+            android:label="Broom Closet"
             android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".TasksActivity"></activity>
+        <activity
+            android:name=".ScheduleActivity"
+            android:label="Schedule Activity"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
