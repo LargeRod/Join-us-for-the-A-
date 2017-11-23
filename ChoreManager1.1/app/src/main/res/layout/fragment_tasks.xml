@@ -8,6 +8,36 @@
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/shopping_tab_button"
+            style="@android:style/Widget.Holo.Light.Button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Shopping" />
+
+        <Button
+            android:id="@+id/shopping_tab_button"
+            style="@android:style/Widget.Holo.Light.Button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Tasks" />
+
+        <Button
+            android:id="@+id/shopping_tab_button"
+            style="@android:style/Widget.Holo.Light.Button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="People" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp">
 
