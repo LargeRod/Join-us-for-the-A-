@@ -27,6 +27,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="joinusforthea.choreproject.choremanager11.MainActivity" />
         </activity>
+        <activity android:name=".TasksActivity"></activity>
     </application>
 
 </manifest>

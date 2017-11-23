@@ -61,10 +61,6 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //EM ADDED THIS WOOHOO!!
-        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        setupViewPager(mViewPager);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
@@ -80,19 +76,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
-    //EM ADDED THIS WEEEEEEE
-    public void setupViewPager(ViewPager viewPager){
-        SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
-
-        adapter.addFragment(new ShoppingFragment(), "Shopping");
-        adapter.addFragment(new TasksFragment(), "Tasks");
-        adapter.addFragment(new PeopleFragment(), "People");
-
-        viewPager.setAdapter(adapter);
-
-    }
-//end
 
     @Override
     public void onBackPressed() {
@@ -133,13 +116,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         mViewPager = (ViewPager) findViewById(R.id.container);
         if (id == R.id.nav_open_task) {
-            //--------------------set the initial fragment-------------------
-            Toast.makeText(getApplicationContext(), "open task pressed from navigation", Toast.LENGTH_LONG).show();
-            mViewPager.setCurrentItem(1);
-            /*ListView listView = (ListView) findViewById(R.id.taskList);
-            ChoreCustomAdapter myAdapter = new ChoreCustomAdapter(this, choreList);
-            listView.setAdapter(myAdapter);*/
-
+            Intent intent = new Intent(MainActivity.this, TasksActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_shopping_list) {
             mViewPager.setCurrentItem(0);
         } else if (id == R.id.nav_schedule) {
@@ -163,7 +141,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onClick(View view){
-
+        Toast toast = Toast.makeText(this, "CLICKED ADD TASK BUTTON", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
 }
