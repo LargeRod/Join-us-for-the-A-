@@ -119,7 +119,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, TasksActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_shopping_list) {
-            mViewPager.setCurrentItem(0);
+            Intent intent = new Intent(MainActivity.this, ShoppingActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_schedule) {
             Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
             startActivity(intent);

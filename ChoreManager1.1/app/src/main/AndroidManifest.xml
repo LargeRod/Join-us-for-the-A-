@@ -29,6 +29,7 @@
         </activity>
         <activity
             android:name=".BroomCloset"
+<<<<<<< Updated upstream
             android:label="Broom Closet"
             android:parentActivityName=".MainActivity">
         </activity>
@@ -38,6 +39,12 @@
             android:label="Schedule Activity"
             android:parentActivityName=".MainActivity">
         </activity>
+=======
+            android:label="broomCloset"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".TasksActivity" />
+        <activity android:name=".ShoppingActivity"></activity>
+>>>>>>> Stashed changes
     </application>
 
 </manifest>

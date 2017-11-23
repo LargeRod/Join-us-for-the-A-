@@ -8,6 +8,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
+        android:id="@+id/tabs_layout"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:orientation="horizontal">
@@ -21,7 +22,7 @@
             android:text="Shopping" />
 
         <Button
-            android:id="@+id/shopping_tab_button"
+            android:id="@+id/task_tab_button"
             style="@android:style/Widget.Holo.Light.Button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,7 +30,7 @@
             android:text="Tasks" />
 
         <Button
-            android:id="@+id/shopping_tab_button"
+            android:id="@+id/people_tab_button"
             style="@android:style/Widget.Holo.Light.Button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
