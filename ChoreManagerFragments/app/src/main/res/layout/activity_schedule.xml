@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/calendar_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:gravity="center"
+        android:text="@string/calendar"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="36sp" />
+
+    <CalendarView
+        android:id="@+id/view_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/newTaskLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:clickable="true" android:focusable="true">
+
+        <ImageButton
+            android:id="@+id/newTaskButton"
+            app:srcCompat="@drawable/solid_add"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:backgroundTint="@color/CLEAR"
+            android:scaleType="fitStart" />
+
+        <TextView
+            android:id="@+id/newTaskText"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="@string/new_task" />
+
+    </LinearLayout>
+</LinearLayout>
