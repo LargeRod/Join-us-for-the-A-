@@ -18,7 +18,7 @@ public class BroomCloset extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.broom_closet);
 
-        ListView listView = (ListView) findViewById(R.id.listOfTools);
+        ListView listView = (ListView) findViewById(R.id.itemList);
         ItemCustomAdapter adapter = new ItemCustomAdapter(this, toolList);
         listView.setAdapter(adapter);
 

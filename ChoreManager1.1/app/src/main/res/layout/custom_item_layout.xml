@@ -8,17 +8,10 @@
     <!--TODO make it pretty @LargeRod
     -->
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@color/CLEAR"
-        android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
-        android:scaleType="fitCenter" />
-        <!--app:srcCompat="@drawable/hollow_add" />-->
+    <Space
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:elevation="0dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,4 +38,6 @@
     </LinearLayout>
 
 </LinearLayout>
+
+
 
