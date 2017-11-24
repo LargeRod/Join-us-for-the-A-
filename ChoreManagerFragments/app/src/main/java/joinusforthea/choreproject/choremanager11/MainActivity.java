@@ -147,7 +147,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_people) {
             mViewPager.setCurrentItem(2);
         } else if (id == R.id.nav_cupboard_and_fridge) {
-
+            Intent intent = new Intent(MainActivity.this, CupboardFridgeActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_broom_closet) {
             Intent intent = new Intent(MainActivity.this, BroomClosetActivity.class);
             startActivity(intent);

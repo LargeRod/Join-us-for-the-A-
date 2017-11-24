@@ -56,6 +56,11 @@
             android:label="Task Backlog"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity
+            android:name=".CupboardFridgeActivity"
+            android:label="Cupboard and Fridge"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
