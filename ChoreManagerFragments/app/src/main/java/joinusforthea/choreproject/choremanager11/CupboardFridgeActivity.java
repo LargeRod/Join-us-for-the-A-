@@ -20,8 +20,5 @@ public class CupboardFridgeActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.foodList);
         CupboardFridgeAdapter adapter = new CupboardFridgeAdapter(this, toolList);
         listView.setAdapter(adapter);
-
-
-
     }
 }

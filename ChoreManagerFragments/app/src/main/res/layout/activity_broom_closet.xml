@@ -1,10 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:id="@+id/newFoodLayout"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:clickable="true">
+
+            <ImageButton
+                android:id="@+id/newFoodButton"
+                android:layout_width="50dp"
+                android:layout_height="fill_parent"
+                android:backgroundTint="@color/CLEAR"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/solid_add" />
+
+            <EditText
+                android:id="@+id/newToolText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Add tool"
+                android:inputType="textAutoCorrect"
+                android:background="@android:color/transparent"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="0dp" />
+
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/listOfTools"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

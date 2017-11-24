@@ -15,7 +15,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         //before having changed the signature to a fragment
-        ListView listView= (ListView) findViewById(R.id.list);
+        ListView listView= (ListView) findViewById(R.id.settingsList);
         ChoreCustomAdapter adapter = new ChoreCustomAdapter(this, choreList);
         listView.setAdapter(adapter);
 
