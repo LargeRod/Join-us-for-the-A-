@@ -199,8 +199,7 @@
     <TextView
         android:id="@+id/required_equipment"
         android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:layout_weight="1"
+        android:layout_height="30dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:text="Required Equipment"
@@ -208,19 +207,58 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <LinearLayout
+    <GridLayout
         android:id="@+id/required_equipment_list"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
+        android:layout_height="150dp"
+        android:background="@android:color/darker_gray">
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="180dp"
+                android:layout_height="70dp"
+                android:text="Bucket"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="180dp"
+                android:layout_height="70dp"
+                android:text="Sponge"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="180dp"
+                android:layout_height="70dp"
+                android:text="Car Wax Kit"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="180dp"
+                android:layout_height="70dp"
+                android:text="Hose Nozzle"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </GridLayout>
 
     <TextView
         android:id="@+id/notes"
         android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:layout_weight="1"
+        android:layout_height="30dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:text="Notes"
@@ -231,7 +269,7 @@
     <EditText
         android:id="@+id/note_details"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="110dp"
         android:elegantTextHeight="false"
         android:ems="10"
         android:inputType="textPersonName" />
