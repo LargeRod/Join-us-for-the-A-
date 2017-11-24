@@ -8,8 +8,8 @@ import android.widget.ListView;
 /**
  * Created by LargeRod on 2017-11-22.
  */
-//todo clean up UI
-public class BroomCloset extends AppCompatActivity {
+
+public class BroomClosetActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
 
