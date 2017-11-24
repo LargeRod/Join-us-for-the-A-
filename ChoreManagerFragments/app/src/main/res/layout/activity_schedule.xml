@@ -37,12 +37,18 @@
             android:backgroundTint="@color/CLEAR"
             android:scaleType="fitStart" />
 
-        <TextView
+        <EditText
             android:id="@+id/newTaskText"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center"
-            android:text="@string/new_task" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="New @string/new_task"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
 
     </LinearLayout>
 </LinearLayout>
