@@ -142,7 +142,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_task_backlog) {
-
+            Intent intent = new Intent(MainActivity.this, TasksBacklog.class);
+            startActivity(intent);
         } else if (id == R.id.nav_people) {
             mViewPager.setCurrentItem(2);
         } else if (id == R.id.nav_cupboard_and_fridge) {
