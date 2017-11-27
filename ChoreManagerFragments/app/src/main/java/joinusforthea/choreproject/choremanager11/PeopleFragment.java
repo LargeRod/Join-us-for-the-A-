@@ -8,12 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
-
+//EV: fragments inspired by Mitch Tabian
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PeopleFragment extends Fragment {
-
 
     public PeopleFragment() {
         // Required empty public constructor

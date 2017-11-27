@@ -1,6 +1,6 @@
 package joinusforthea.choreproject.choremanager11;
 
-
+//EV: fragments inspired by Mitch Tabian
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;

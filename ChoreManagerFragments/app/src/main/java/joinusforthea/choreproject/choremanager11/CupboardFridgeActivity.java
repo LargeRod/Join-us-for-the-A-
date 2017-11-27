@@ -3,7 +3,6 @@ package joinusforthea.choreproject.choremanager11;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
-
 /**
  * Created by Digo9 on 2017-11-24.
  */

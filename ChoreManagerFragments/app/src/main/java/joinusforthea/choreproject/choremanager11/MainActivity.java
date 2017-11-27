@@ -22,9 +22,8 @@ public class MainActivity extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    // TAKEN FROM LAB, REMOVE WEN IMPLEMENTING
-    //Em added this
-//remove list when no longer testing
+
+    //added automatically
     NavigationView navigationView;
     Toolbar toolbar = null;
 
@@ -32,9 +31,8 @@ public class MainActivity extends AppCompatActivity
     private ViewPager mViewPager;
 
 
-//end
-
     @Override
+    //on create was added automatically
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -67,20 +65,11 @@ public class MainActivity extends AppCompatActivity
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
-        //--------------------set the initial fragment-------------------
-        /*TasksFragment tasks_fragment = new TasksFragment();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,tasks_fragment);
-        fragmentTransaction.commit();*/
-//end
-
-
     }
 
 
 
-    //EM ADDED THIS WEEEEEEE
+    //EV: taken from Mitch Tabian
     public void setupViewPager(ViewPager viewPager){
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
 
@@ -91,7 +80,6 @@ public class MainActivity extends AppCompatActivity
         viewPager.setAdapter(adapter);
 
     }
-//end
 
     @Override
     public void onBackPressed() {
@@ -111,6 +99,7 @@ public class MainActivity extends AppCompatActivity
     }*/
 
     @Override
+    //EV: this was created automatically
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -127,6 +116,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
+    //EV: this was created automatically, then modified
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();

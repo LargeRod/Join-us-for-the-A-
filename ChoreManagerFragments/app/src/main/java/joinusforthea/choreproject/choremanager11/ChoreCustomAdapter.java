@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+//EV: inspired by Mitch Tabian and the labs
 /**
  * Created by admin on 07/11/2017.
  */

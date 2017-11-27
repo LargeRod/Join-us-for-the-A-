@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//EV: created Mitch Tabian to handle fragments
 /**
  * Created by admin on 21/11/2017.
  */
