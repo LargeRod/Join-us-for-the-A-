@@ -65,6 +65,10 @@
             android:name=".OpenedTaskActivity"
             android:label="task_name">
         </activity>
+        <activity android:name=".MessageActivity"
+            android:label="Messages"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>

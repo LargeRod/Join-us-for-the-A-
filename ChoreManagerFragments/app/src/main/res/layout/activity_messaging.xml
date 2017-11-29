@@ -9,12 +9,14 @@
     <ListView
         android:id="@+id/messages"
         android:layout_width="match_parent"
-        android:layout_height="430dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="80" />
 
     <LinearLayout
         android:id="@+id/messageAndSend"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_weight="20"
         android:orientation="horizontal">
 
         <EditText
@@ -23,8 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Insert Text Here" />
+            android:hint="Insert Text Here"
+            android:inputType="textPersonName" />
 
         <ImageButton
             android:id="@+id/sendMessage"
