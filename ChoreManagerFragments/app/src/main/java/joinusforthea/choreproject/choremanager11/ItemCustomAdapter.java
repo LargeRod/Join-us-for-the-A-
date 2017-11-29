@@ -32,7 +32,7 @@ public class ItemCustomAdapter extends ArrayAdapter<String> {
 
         choreNameTextField.setText(myChores[position]);
         choreNameTextField.setText(myChores[position]);
-        choreFootnote.setText("1");
+        choreFootnote.setText("Amount: 1");
 
 
         return rowView;
