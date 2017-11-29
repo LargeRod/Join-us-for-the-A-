@@ -4,10 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="joinusforthea.choreproject.choremanager11.SettingsActivity">
 
-    <ListView
-        android:id="@+id/settingsList"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="370dp"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="User profile picture"
+                app:srcCompat="@drawable/boy" />
+
+            <EditText
+                android:id="@+id/profileName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:hint="profile_name_goes_here"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addNewUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add New User" />
+
+    </LinearLayout>
 </LinearLayout>

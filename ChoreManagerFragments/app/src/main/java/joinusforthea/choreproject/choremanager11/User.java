@@ -7,7 +7,7 @@ package joinusforthea.choreproject.choremanager11;
 class User {
 
     private String name;
-    //TODO not sure if the avatar shoudl be string
+    //TODO not sure if the avatar should be string
     private String avatar;
     private Task[] currentTasks;
     private Task[] completedTasks;
