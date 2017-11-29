@@ -269,9 +269,10 @@
     <EditText
         android:id="@+id/noteDetails"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:elegantTextHeight="false"
+        android:layout_height="match_parent"
+        android:backgroundTint="@android:color/transparent"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textMultiLine"
+        android:textAlignment="viewStart" />
 
 </LinearLayout>

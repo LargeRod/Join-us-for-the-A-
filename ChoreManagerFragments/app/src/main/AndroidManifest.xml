@@ -61,6 +61,10 @@
             android:label="Cupboard and Fridge"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity
+            android:name=".OpenedTaskActivity"
+            android:label="task_name">
+        </activity>
     </application>
 
 </manifest>

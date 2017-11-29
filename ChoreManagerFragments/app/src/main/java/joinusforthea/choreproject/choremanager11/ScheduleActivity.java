@@ -1,8 +1,10 @@
 package joinusforthea.choreproject.choremanager11;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
@@ -21,5 +23,10 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void openTaskActivity (View v) {
+        Intent intent = new Intent(ScheduleActivity.this, OpenedTaskActivity.class);
+        startActivity(intent);
     }
 }
