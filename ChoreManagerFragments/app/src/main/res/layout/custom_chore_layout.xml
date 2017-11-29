@@ -6,10 +6,12 @@
     android:layout_height="75dp">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/avatarImageButton"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@color/CLEAR"
+        android:clickable="true"
+        android:onClick="clickedAvatar"
         android:paddingBottom="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="10dp"

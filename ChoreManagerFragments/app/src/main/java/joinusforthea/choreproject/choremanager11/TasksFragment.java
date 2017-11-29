@@ -1,11 +1,13 @@
 package joinusforthea.choreproject.choremanager11;
 
 //EV: fragments inspired by Mitch Tabian
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,6 +24,8 @@ public class TasksFragment extends Fragment {
     }
 
     private LinearLayout taskLayout;
+    private ImageButton buttonAddTask;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -37,12 +41,26 @@ public class TasksFragment extends Fragment {
         ChoreCustomAdapter adapter = new ChoreCustomAdapter(getActivity(), choreList);
         listView.setAdapter(adapter);
 
+        buttonAddTask = (ImageButton) view.findViewById(R.id.newTaskButton);
+
+        buttonAddTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "clicked add task",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        //getting reference to the custom chore layout
+        View customView  = inflater.inflate(R.layout.custom_chore_layout, container, false);
 
         return view ;
     }
 
 
-    private void clickedCreateNewTask(View view) {
+    public void clickedCreateNewTask(View view) {
         Toast.makeText(getActivity(), "TESTING BUTTON CLICK 1",Toast.LENGTH_SHORT).show();
     }
+
+
 }

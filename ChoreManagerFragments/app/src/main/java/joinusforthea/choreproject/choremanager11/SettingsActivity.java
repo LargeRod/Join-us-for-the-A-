@@ -2,7 +2,6 @@ package joinusforthea.choreproject.choremanager11;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListView;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -13,11 +12,5 @@ public class SettingsActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        //before having changed the signature to a fragment
-        ListView listView= (ListView) findViewById(R.id.settingsList);
-        ChoreCustomAdapter adapter = new ChoreCustomAdapter(this, choreList);
-        listView.setAdapter(adapter);
-
     }
 }

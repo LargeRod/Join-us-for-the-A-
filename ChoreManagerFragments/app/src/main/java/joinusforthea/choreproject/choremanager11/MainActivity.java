@@ -156,7 +156,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onClick(View view){
+        Toast.makeText(this, "from main", Toast.LENGTH_SHORT).show();
+    }
 
+
+    public void clickedAvatar(View view){
+        Toast.makeText(this, "clicked avatar method",Toast.LENGTH_SHORT).show();
     }
 
 }
