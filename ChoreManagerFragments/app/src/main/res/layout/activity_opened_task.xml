@@ -2,32 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/opened_task"
+    android:id="@+id/openedTask"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp">
 
     <LinearLayout
-        android:id="@+id/profile_and_release"
+        android:id="@+id/profileAndRelease"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/profile_icon"
+            android:id="@+id/profileIcon"
             android:layout_width="65dp"
             android:layout_height="65dp"
             app:srcCompat="@drawable/boy" />
 
         <LinearLayout
-            android:id="@+id/name_and_assignment"
+            android:id="@+id/nameAndAssignment"
             android:layout_width="100dp"
             android:layout_height="65dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/first_name"
+                android:id="@+id/firstName"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:gravity="center_vertical|center_horizontal"
@@ -76,13 +76,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/time_and_creator"
+        android:id="@+id/timeAndCreator"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/duration_and_due"
+            android:id="@+id/durationAndDue"
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:orientation="vertical">
@@ -94,7 +94,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/clock_and_duration"
+                    android:id="@+id/clockAndDuration"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:orientation="horizontal">
@@ -123,7 +123,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/calender_and_due"
+                    android:id="@+id/calenderAndDue"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:orientation="horizontal">
@@ -154,13 +154,13 @@
             android:layout_weight="1" />
 
         <LinearLayout
-            android:id="@+id/creator_and_icon"
+            android:id="@+id/creatorAndIcon"
             android:layout_width="160dp"
             android:layout_height="100dp"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/creator_name"
+                android:id="@+id/creatorName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -208,7 +208,7 @@
         android:textStyle="bold" />
 
     <GridLayout
-        android:id="@+id/required_equipment_list"
+        android:id="@+id/requiredEquipmentList"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@android:color/darker_gray">
@@ -267,7 +267,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/note_details"
+        android:id="@+id/noteDetails"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:elegantTextHeight="false"
