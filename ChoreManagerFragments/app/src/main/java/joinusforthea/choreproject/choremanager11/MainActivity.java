@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity
         });
 
 
+        //EV: creating the unassigned user
+        User unassigned = new User("unassigned","R.drawable.hollow_add");
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

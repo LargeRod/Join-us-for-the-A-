@@ -16,7 +16,7 @@
             android:id="@+id/newTaskLayout"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:clickable="true">
+            android:clickable="true" android:focusable="true">
 
             <ImageButton
                 android:id="@+id/newTaskButton"
@@ -27,15 +27,14 @@
                 app:srcCompat="@drawable/solid_add" />
 
             <EditText
-                android:id="@+id/newTaskText"
-                android:layout_width="match_parent"
+                android:id="@+id/newTaskName"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:ems="10"
-                android:hint="New @string/new_task"
-                android:inputType="textPersonName"
-                android:text="Name"
                 android:background="@android:color/transparent"
+                android:ems="10"
+                android:hint="@string/hint_newTitle"
+                android:inputType="textPersonName"
                 android:textAppearance="@style/TextAppearance.AppCompat" />
 
         </LinearLayout>
@@ -52,7 +51,7 @@
             android:foregroundGravity="right"
             android:gravity="right|center"
             android:paddingRight="15dp"
-            android:text="Only my tasks    "
+            android:text="@string/only_my_tasks"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
             android:textSize="16sp" />
 

@@ -86,4 +86,6 @@
     <string name="new_task">New Task</string>
     <string name="main_label">Quick Access</string>
     <string name="title_activity_broom_closet">Broom Closet</string>
+    <string name="only_my_tasks">Only my tasks</string>
+    <string name="hint_newTitle">New chore title</string>
 </resources>

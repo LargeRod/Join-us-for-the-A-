@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "214171513089",
+    "firebase_url": "https://chore-manager-seg.firebaseio.com",
+    "project_id": "chore-manager-seg",
+    "storage_bucket": "chore-manager-seg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214171513089:android:0e6f61b9cbd7c85a",
+        "android_client_info": {
+          "package_name": "joinusforthea.choreproject.choremanager11"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214171513089-4l94kch52nb2t9jmc019c0nost114h86.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "joinusforthea.choreproject.choremanager11",
+            "certificate_hash": "44f643c1f349a6f7b7cc15428d4930db45a155c3"
+          }
+        },
+        {
+          "client_id": "214171513089-c58eo2ns8g4mmj27f1r3jn95mi0l2ulb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD5D3KXzQO5RQrh7KlBePl2tyrJdFIoSg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214171513089-c58eo2ns8g4mmj27f1r3jn95mi0l2ulb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
