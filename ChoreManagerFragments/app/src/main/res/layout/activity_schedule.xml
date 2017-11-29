@@ -29,13 +29,17 @@
         android:layout_height="50dp"
         android:clickable="true" android:focusable="true">
 
-        <ImageButton
+        <Button
             android:id="@+id/newTaskButton"
-            app:srcCompat="@drawable/solid_add"
-            android:layout_width="50dp"
-            android:layout_height="fill_parent"
-            android:backgroundTint="@color/CLEAR"
-            android:scaleType="fitStart" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:lineSpacingExtra="8sp"
+            android:onClick="openTaskActivity"
+            android:text="+"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/newTaskText"
