@@ -140,28 +140,31 @@
 
         </GridLayout>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="62dp">
 
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="62dp"
-                android:layout_height="match_parent"
-                android:background="@color/CLEAR"
-                app:srcCompat="@android:drawable/ic_input_add" />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:onClick="openTaskActivity"
+                android:text="+"
+                android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/editText7"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="New item"
-                android:inputType="textPersonName"
-                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:textColorLink="@color/colorPrimaryDark" />
-
+                android:ems="10"
+                android:hint="  New item"
+                android:inputType="textPersonName"
+                android:textAlignment="viewStart" />
         </GridLayout>
 
     </LinearLayout>
