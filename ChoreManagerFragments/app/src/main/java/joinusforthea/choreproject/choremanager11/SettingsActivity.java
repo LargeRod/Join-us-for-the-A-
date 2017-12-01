@@ -28,7 +28,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void deleteUser(View v) {
         //IMPLEMENT DELETING A USER IN HERE
-
         //SHOULD CAUSE ALL THEIR TASKS TO BECOME "UNASSIGNED"
     }
 }
