@@ -2,11 +2,8 @@ package joinusforthea.choreproject.choremanager11;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD
-=======
 import android.view.View;
 import android.widget.ListView;
->>>>>>> b5a4411a54337629c1fad0ea248a19398618c4cf
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -15,8 +12,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-<<<<<<< HEAD
-=======
 
     }
 
@@ -35,6 +30,5 @@ public class SettingsActivity extends AppCompatActivity {
         //IMPLEMENT DELETING A USER IN HERE
 
         //SHOULD CAUSE ALL THEIR TASKS TO BECOME "UNASSIGNED"
->>>>>>> b5a4411a54337629c1fad0ea248a19398618c4cf
     }
 }
