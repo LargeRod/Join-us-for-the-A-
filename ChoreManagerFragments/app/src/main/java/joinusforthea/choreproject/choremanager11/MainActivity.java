@@ -174,4 +174,8 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void addItem(View view){
+        Toast.makeText(this, "Clicked add item", Toast.LENGTH_SHORT).show();
+    }
+
 }

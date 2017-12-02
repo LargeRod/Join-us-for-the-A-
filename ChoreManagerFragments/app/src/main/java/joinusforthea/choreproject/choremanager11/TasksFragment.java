@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -57,10 +59,13 @@ public class TasksFragment extends Fragment {
         return view ;
     }
 
-
-    public void clickedCreateNewTask(View view) {
-        Toast.makeText(getActivity(), "TESTING BUTTON CLICK 1",Toast.LENGTH_SHORT).show();
+    //TODO THIS IS A TEST REMOVE WHEN DONE
+    public void addItem(View view){
+        GridLayout gridLayout = (GridLayout) view.findViewById(R.id.materialsGrid);
+        CheckBox cb = new CheckBox(getContext());
+        cb.setText("testing");
+        gridLayout.addView(cb);
+        Toast.makeText(getContext(), "CLICKED ADD ITEM", Toast.LENGTH_SHORT).show();
     }
-
 
 }

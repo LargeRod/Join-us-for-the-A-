@@ -146,15 +146,18 @@
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="62dp">
+            android:layout_height="62dp"
+            android:clickable="true">
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:onClick="openTaskActivity"
+                android:clickable="true"
+                android:onClick="addItem"
                 android:text="+"
                 android:textSize="24sp" />
+
 
             <EditText
                 android:id="@+id/editText"
@@ -164,7 +167,7 @@
                 android:ems="10"
                 android:hint="  New item"
                 android:inputType="textPersonName"
-                android:textAlignment="viewStart" />
+                android:gravity="start" />
         </GridLayout>
 
     </LinearLayout>
