@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -155,16 +154,22 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void onClick(View view){
-        Toast.makeText(this, "from main", Toast.LENGTH_SHORT).show();
+
+    //EV: these methods are called from xml files when something is clicked
+    public void openProfile(View view){
+        //called from an avatar being clicked
+        Intent intent = new Intent(MainActivity.this, ProfilePageActivity.class);
+        startActivity(intent);
     }
 
-
-    public void clickedAvatar(View view){
-        Toast.makeText(this, "clicked avatar method",Toast.LENGTH_SHORT).show();
+    public void openTask(View view){
+        //called from a task being clicked
+        Intent intent = new Intent(MainActivity.this, OpenedTaskActivity.class);
+        startActivity(intent);
     }
 
-    public void openMessages(View v) {
+    public void openMessages(View view) {
+        //TODO add comment weeeeeeeeeeeeeeeee
         Intent intent = new Intent(MainActivity.this, MessageActivity.class);
         startActivity(intent);
     }

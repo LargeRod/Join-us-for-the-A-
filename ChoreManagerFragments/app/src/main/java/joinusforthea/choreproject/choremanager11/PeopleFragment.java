@@ -14,6 +14,9 @@ import android.widget.Toast;
  */
 public class PeopleFragment extends Fragment {
 
+    static final String[] peopleList = {"Jim","Pam","Dwight","Stanley","Angela","Kevin","Your Mom","My Dog"};
+
+
     public PeopleFragment() {
         // Required empty public constructor
     }
@@ -24,7 +27,6 @@ public class PeopleFragment extends Fragment {
 
         View view  = inflater.inflate(R.layout.fragment_people, container, false);
 
-        final String[] peopleList = {"Jim","Pam","Dwight","Stanley","Angela","Kevin","Your Mom","My Dog"};
 
 
         ListView listView= (ListView) view.findViewById(R.id.peopleList);
@@ -33,6 +35,10 @@ public class PeopleFragment extends Fragment {
 
 
         return view ;
+    }
+
+    public static String[] getPeople(){
+        return peopleList;
     }
 
 

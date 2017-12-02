@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.util.Date;
 
 /**
  * Created by jarro on 2017-11-28.
@@ -29,9 +31,11 @@ public class MessageCustomAdapter extends ArrayAdapter<String> {
         TextView timeSent = (TextView) rowView.findViewById(R.id.timeSent);
         TextView name = (TextView) rowView.findViewById(R.id.name);
 
+        //TODO make these pull the real messages from firebase
         messageTextField.setText(messages[position]);
-        name.setText(messages[position]);
-        timeSent.setText(messages[position]);
+        name.setText(PeopleFragment.getPeople()[position]);
+        //It will have to save in another array
+        timeSent.setText(DateFormat.getDateTimeInstance().format(new Date()));
 
 
         return rowView;

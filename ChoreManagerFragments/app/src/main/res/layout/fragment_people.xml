@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context="joinusforthea.choreproject.choremanager11.TasksFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <ListView
         android:id="@+id/peopleList"
