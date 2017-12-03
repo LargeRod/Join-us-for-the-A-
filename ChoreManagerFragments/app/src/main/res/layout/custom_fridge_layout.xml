@@ -25,6 +25,7 @@
             android:text="food Name goes here"
             android:textAppearance="@android:style/TextAppearance" />
 
+
         <TextView
             android:id="@+id/foodFootnoteTextView"
             android:layout_width="fill_parent"
