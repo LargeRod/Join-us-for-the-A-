@@ -7,17 +7,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 //EV: inspired by Mitch Tabian and the labs
 /**
  * Created by admin on 07/11/2017.
  */
 
-public class ChoreCustomAdapter extends ArrayAdapter<String> {
+public class TaskCustomAdapter extends ArrayAdapter<String> {
     private final Context context;
     private final String[] myChores;
     private ImageButton avatarButton;
-    public ChoreCustomAdapter(Context context, String[] choreList) {
+    public TaskCustomAdapter(Context context, String[] choreList) {
         super(context, R.layout.custom_chore_layout, choreList);
         this.context = context;
         this.myChores = choreList;

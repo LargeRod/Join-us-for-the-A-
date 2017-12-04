@@ -18,7 +18,7 @@ public class TasksBacklog extends AppCompatActivity{
         setContentView(R.layout.activity_tasks_backlog);
 
         ListView listView = (ListView) findViewById(R.id.listOfCompletedTasks);
-        ChoreCustomAdapter adapter = new ChoreCustomAdapter(this, completedChoreList);
+        TaskCustomAdapter adapter = new TaskCustomAdapter(this, completedChoreList);
         listView.setAdapter(adapter);
     }
 }

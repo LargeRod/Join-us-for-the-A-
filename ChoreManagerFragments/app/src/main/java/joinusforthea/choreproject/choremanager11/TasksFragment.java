@@ -40,7 +40,7 @@ public class TasksFragment extends Fragment {
         textView.setText("Task Fragment");
 
         ListView listView= (ListView) view.findViewById(R.id.taskList);
-        ChoreCustomAdapter adapter = new ChoreCustomAdapter(getActivity(), choreList);
+        TaskCustomAdapter adapter = new TaskCustomAdapter(getActivity(), choreList);
         listView.setAdapter(adapter);
 
         buttonAddTask = (ImageButton) view.findViewById(R.id.newTaskButton);
