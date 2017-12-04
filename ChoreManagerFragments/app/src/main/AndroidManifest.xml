@@ -63,8 +63,12 @@
         </activity>
         <activity
             android:name=".OpenedTaskActivity"
-            android:label="task_name">
-        </activity>
+            android:label="task name*******"
+            android:parentActivityName=".MainActivity">
+        </activity> <activity
+        android:name=".TaskAddActivity"
+        android:label="New Task">
+    </activity>
         <activity android:name=".MessageActivity"
             android:label="Messages"
             android:parentActivityName=".MainActivity">

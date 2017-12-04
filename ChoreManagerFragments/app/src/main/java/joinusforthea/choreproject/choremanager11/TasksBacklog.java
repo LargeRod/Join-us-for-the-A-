@@ -16,7 +16,7 @@ public class TasksBacklog extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks_backlog);
 
-        //EV: commenging out untill i figure out what the parameters should be
+       // EV: commenging out untill i figure out what the parameters should be
 //        ListView listView = (ListView) findViewById(R.id.listOfCompletedTasks);
 //        TaskCustomAdapter adapter = new TaskCustomAdapter(this, completedChoreList);
 //        listView.setAdapter(adapter);

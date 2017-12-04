@@ -1,7 +1,12 @@
+//TODO: @Emilie make the add task screen add a real task
+//TODO: @Emilie add firebase to all the other garbages if possible (y)
+
+
 package joinusforthea.choreproject.choremanager11;
 
 //EV: fragments inspired by Mitch Tabian
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -54,23 +59,16 @@ public class TasksFragment extends Fragment {
 
         taskNameEditTextView = (EditText) view.findViewById(R.id.newTaskName);
 
-//        //EV: this should be removed later --
-//        final String[] choreList = {"Walk Dog", "Do the Dishes", "Clean Room", "Make Bed", "Take Trash Out", "Eat the garbage"};
-//        TextView textView = new TextView(getActivity());
-//        textView.setText("Task Fragment");
-//        ListView listView= (ListView) view.findViewById(R.id.taskList);
-//        TaskCustomAdapter adapter = new TaskCustomAdapter(getActivity(), choreList);
-//        listView.setAdapter(adapter);
-//        // -- end
-
         //adding on click listener for the buttonAddTask button
         buttonAddTask = (ImageButton) view.findViewById(R.id.newTaskButton);
         buttonAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TaskAddActivity.class);
+                getActivity().startActivity(intent);
                 addTask();
             }
-        });
+        });//end of the onclick listener
 
 
         //getting reference to the custom chore layout
@@ -87,9 +85,7 @@ public class TasksFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                //clearing the previous artist list
-                //TODO: PUT THIS THING BACK WHERE IT CAME FROM OR SO HELP ME
-                //EV: commenting this out for a test
+                //clearing the previous task list?
                 tasks.clear();
 
                 //iterating through all the nodes

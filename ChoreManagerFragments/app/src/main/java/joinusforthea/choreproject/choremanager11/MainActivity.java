@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -166,7 +167,12 @@ public class MainActivity extends AppCompatActivity
 
     public void openTask(View view){
         //called from a task being clicked
+
+        //casting the findViewById to a text view, then getting text and converting to string
+        String taskName = ((TextView) view.findViewById(R.id.choreNameTextView)).getText().toString();
+
         Intent intent = new Intent(MainActivity.this, OpenedTaskActivity.class);
+        intent.putExtra("Task Name", taskName);
         startActivity(intent);
     }
 
@@ -174,10 +180,6 @@ public class MainActivity extends AppCompatActivity
         //TODO add comment weeeeeeeeeeeeeeeee
         Intent intent = new Intent(MainActivity.this, MessageActivity.class);
         startActivity(intent);
-    }
-
-    public void addItem(View view){
-        Toast.makeText(this, "Clicked add item", Toast.LENGTH_SHORT).show();
     }
 
 }
