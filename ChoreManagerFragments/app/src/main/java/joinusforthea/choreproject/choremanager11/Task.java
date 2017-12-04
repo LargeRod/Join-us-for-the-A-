@@ -3,8 +3,6 @@ package joinusforthea.choreproject.choremanager11;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.xml.datatype.Duration;
-
 /**
  * Created by admin on 28/11/2017.
  */
@@ -17,7 +15,7 @@ public class Task implements Serializable {
     private boolean completed;
     private User creator;
     private String footNote;
-    private Duration duration;
+    private String duration;
     private User assignedTo;
     private String taskName;
     private Date deadline;
@@ -40,7 +38,7 @@ public class Task implements Serializable {
     }
 
     public Task(){
-
+        //needed empty constructor
     }
 
 
@@ -104,11 +102,11 @@ public class Task implements Serializable {
         this.footNote = footNote;
     }
 
-    public Duration getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 

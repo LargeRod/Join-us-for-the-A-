@@ -44,6 +44,7 @@ public class TasksFragment extends Fragment {
     ListView listViewTask;
     EditText taskNameEditTextView;
 
+
     private LinearLayout taskLayout;
     private ImageButton buttonAddTask;
 
@@ -52,9 +53,8 @@ public class TasksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //firebase instantiations
         databaseTasks = FirebaseDatabase.getInstance().getReference("tasks");
-        tasks = new ArrayList<>();
-
         View view = inflater.inflate(R.layout.fragment_tasks, container, false);
+        tasks = new ArrayList<>();
         listViewTask = (ListView) view.findViewById(R.id.taskList);
 
         taskNameEditTextView = (EditText) view.findViewById(R.id.newTaskName);
@@ -102,7 +102,6 @@ public class TasksFragment extends Fragment {
                 }
 
                 //creating adapter
-                //EV: USING NUMBER 2 AS A TEST
                 TaskCustomAdapter taskAdapter = new TaskCustomAdapter(getActivity(), tasks);
                 //attaching adapter to the listview
                 listViewTask.setAdapter(taskAdapter);

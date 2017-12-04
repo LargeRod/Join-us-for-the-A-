@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity
     //added automatically
     NavigationView navigationView;
     Toolbar toolbar = null;
-
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
 
@@ -51,8 +50,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-        //EV: creating the unassigned user
-        User unassigned = new User("unassigned","R.drawable.hollow_add");
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

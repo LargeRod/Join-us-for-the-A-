@@ -14,14 +14,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 //EV: fragments inspired by Mitch Tabian
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PeopleFragment extends Fragment {
-
-    //static final String[] peopleList = {"Jim","Pam","Dwight","Stanley","Angela","Kevin","Your Mom","My Dog"};
 
     DatabaseReference databasePeople;
     List<User> users;
@@ -34,16 +33,12 @@ public class PeopleFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        databasePeople = FirebaseDatabase.getInstance().getReference("users");
 
-        databasePeople = FirebaseDatabase.getInstance().getReference("people");
         View view  = inflater.inflate(R.layout.fragment_people, container, false);
-
-
-
-        ListView listView= (ListView) view.findViewById(R.id.peopleList);
+        users = new ArrayList<>();
+        peopleList= (ListView) view.findViewById(R.id.peopleList);
         PeopleCustomAdapter adapter = new PeopleCustomAdapter(getActivity(), users);
-        listView.setAdapter(adapter);
-
 
         return view ;
     }

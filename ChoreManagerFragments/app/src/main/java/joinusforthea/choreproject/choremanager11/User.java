@@ -1,21 +1,29 @@
 package joinusforthea.choreproject.choremanager11;
 
+import java.io.Serializable;
+
 /**
  * Created by admin on 28/11/2017.
  */
 
-class User {
+class User implements Serializable{
+
+    public User() {
+        //needed empty constructor
+    }
 
     private String name;
     private String avatar;
     private Task[] currentTasks;
     private Task[] completedTasks;
+    private String id;
 
 
 
-    public User(String name, String avatar) {
+    public User(String name, String avatar, String id) {
         this.name = name;
         this.avatar = avatar;
+        this.id = id;
     }
 
 
@@ -37,4 +45,13 @@ class User {
     public String getAvatar() {
         return avatar;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String toString(){
+        return getName();
+    }
+
 }
