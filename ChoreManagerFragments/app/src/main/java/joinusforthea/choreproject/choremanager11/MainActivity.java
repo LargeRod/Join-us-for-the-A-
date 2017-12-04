@@ -30,10 +30,12 @@ public class MainActivity extends AppCompatActivity
     private ViewPager mViewPager;
 
 
+
     @Override
     //on create was added automatically
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context="joinusforthea.choreproject.choremanager11.TasksFragment">
 
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp">
@@ -22,6 +21,7 @@
                 android:layout_width="50dp"
                 android:layout_height="fill_parent"
                 android:backgroundTint="@color/CLEAR"
+                android:onClick="addTask"
                 android:scaleType="fitStart"
                 app:srcCompat="@drawable/solid_add" />
 

@@ -23,7 +23,6 @@ public class Task {
 
     //EV: Constructor
 
-
     public Task(String name, User user) {
         taskName = name;
         creator = user;
@@ -31,8 +30,15 @@ public class Task {
         //assignedTo = unassigned;
     }
 
+//temporary constructor for when useres arent implemented yet
 
+    public Task(String name){
+        taskName = name;
+    }
 
+    public Task(){
+
+    }
 
 
 //EV: getters and setters
@@ -109,7 +115,9 @@ public class Task {
         this.assignedTo = assignedTo;
     }
 
-
+    public String toString(){
+        return getTaskName();
+    }
 
 
 

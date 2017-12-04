@@ -1,43 +1,39 @@
 package joinusforthea.choreproject.choremanager11;
 
-import android.content.Context;
+/**
+ * Created by Miguel Garzón on 2017-05-09.
+ */
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.TextView;
-//EV: inspired by Mitch Tabian and the labs
-/**
- * Created by admin on 07/11/2017.
- */
 
-public class TaskCustomAdapter extends ArrayAdapter<String> {
-    private final Context context;
-    private final String[] myChores;
-    private ImageButton avatarButton;
-    public TaskCustomAdapter(Context context, String[] choreList) {
-        super(context, R.layout.custom_chore_layout, choreList);
+import java.util.List;
+
+public class TaskCustomAdapter extends ArrayAdapter<Task> {
+    private Activity context;
+    List<Task> tasks;
+
+    public TaskCustomAdapter(Activity context, List<Task> products) {
+        super(context, R.layout.custom_chore_layout, products);
         this.context = context;
-        this.myChores = choreList;
+        this.tasks = products;
     }
 
-
-
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        //accessing the view
+        LayoutInflater inflater = context.getLayoutInflater();
+        View listViewItem = inflater.inflate(R.layout.custom_chore_layout, null, true);
 
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.custom_chore_layout, parent, false);
-        TextView choreNameTextField = (TextView) rowView.findViewById(R.id.choreNameTextView);
-        //ImageView choreImage = (ImageView) rowView.findViewById(R.id.icon);
-        TextView choreFootnote = (TextView) rowView.findViewById(R.id.choreFootnoteTextView);
+        TextView choreName = (TextView) listViewItem.findViewById(R.id.choreNameTextView);
 
-        choreNameTextField.setText(myChores[position]);
-        choreFootnote.setText(myChores[position]+ " is a chore");
-
-        return rowView;
+        //setting the chore name
+        Task task = tasks.get(position);
+        choreName.setText(task.getTaskName());
+        return listViewItem;
     }
-
 }
-
 
