@@ -16,10 +16,10 @@ public class TaskCustomAdapter extends ArrayAdapter<Task> {
     private Activity context;
     List<Task> tasks;
 
-    public TaskCustomAdapter(Activity context, List<Task> products) {
-        super(context, R.layout.custom_chore_layout, products);
+    public TaskCustomAdapter(Activity context, List<Task> tasks) {
+        super(context, R.layout.custom_chore_layout, tasks);
         this.context = context;
-        this.tasks = products;
+        this.tasks = tasks;
     }
 
     @Override

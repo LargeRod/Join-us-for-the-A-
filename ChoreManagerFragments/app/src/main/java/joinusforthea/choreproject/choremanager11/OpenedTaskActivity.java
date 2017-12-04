@@ -12,8 +12,8 @@ public class OpenedTaskActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String s = getIntent().getStringExtra("Task Name");
-        setTitle(s);
+        String taskName = getIntent().getStringExtra("Task Name");
+        setTitle(taskName);
         setContentView(R.layout.activity_opened_task);
     }
 }

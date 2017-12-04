@@ -51,7 +51,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/doneButton"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:text="DONE" />
@@ -209,13 +209,13 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/noteDetails"
+        android:id="@+id/notesEditText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="@android:color/transparent"
         android:ems="10"
+        android:gravity="start"
         android:inputType="textMultiLine"
-        android:textAlignment="viewStart"
-        android:gravity="start" />
+        android:textAlignment="viewStart" />
 
 </LinearLayout>

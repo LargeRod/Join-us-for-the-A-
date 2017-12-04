@@ -33,7 +33,7 @@ public class MessageCustomAdapter extends ArrayAdapter<String> {
 
         //TODO make these pull the real messages from firebase
         messageTextField.setText(messages[position]);
-        name.setText(PeopleFragment.getPeople()[position]);
+       // name.setText(PeopleFragment.getPeople()[position]);
         //It will have to save in another array
         timeSent.setText(DateFormat.getDateTimeInstance().format(new Date()));
 
