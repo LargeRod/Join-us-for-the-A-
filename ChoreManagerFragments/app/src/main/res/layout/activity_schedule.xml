@@ -27,7 +27,8 @@
         android:id="@+id/newTaskLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:clickable="true" android:focusable="true">
+        android:clickable="true"
+        android:focusable="true">
 
         <Button
             android:id="@+id/newTaskButton"
@@ -48,9 +49,9 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:hint="New @string/new_task"
+            android:hint="Task name"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text=""
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.AppCompat" />
 

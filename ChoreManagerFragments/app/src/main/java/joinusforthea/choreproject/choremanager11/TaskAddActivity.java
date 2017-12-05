@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,14 @@ public class TaskAddActivity extends AppCompatActivity{
                 TaskAddActivity.super.onBackPressed();
             }
         });//end of the onclick listener
+
+        ImageView profileButton = (ImageView) findViewById(R.id.profileIcon);
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     private void updateTask(String id) {
