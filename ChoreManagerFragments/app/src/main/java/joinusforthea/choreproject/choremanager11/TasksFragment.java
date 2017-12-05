@@ -73,6 +73,7 @@ public class TasksFragment extends Fragment {
                     //add task returns null if the name isnt entered, only start activity if
                     //theres a new task name
                     if(task!=null) {
+                        //intent.putExtra passes task to the intent
                         intent.putExtra("Task", task);
                         startActivity(intent);
                     }

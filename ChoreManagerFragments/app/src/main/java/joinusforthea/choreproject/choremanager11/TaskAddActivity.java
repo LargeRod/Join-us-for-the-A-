@@ -1,6 +1,7 @@
 package joinusforthea.choreproject.choremanager11;
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -28,8 +29,8 @@ public class TaskAddActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_add_task);
+        task = (Task)getIntent().getSerializableExtra("Task");
 
         doneButton = (Button) findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +38,6 @@ public class TaskAddActivity extends AppCompatActivity{
             public void onClick(View view) {
                 //this will take everything on the activity_add_task and save it
                 //in the task we're creating
-                task = (Task)getIntent().getSerializableExtra("Task");
                 setTitle(task.getTaskName());
                 taskId = task.getId();
                 updateTask(taskId);
@@ -51,7 +51,6 @@ public class TaskAddActivity extends AppCompatActivity{
         //getting the specified task reference
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("tasks").child(id);
         //updating task
-
         //get the text written in notesEditText
         EditText notesEditText = (EditText) findViewById(R.id.notesEditText);
         String notes = notesEditText.getText().toString();
@@ -74,6 +73,13 @@ public class TaskAddActivity extends AppCompatActivity{
         Toast.makeText(this, "Date from TaskAddActivity: " + dateFragment.toString(), Toast.LENGTH_LONG).show();
         //to string returns the date in proper format
         dueDate = dateFragment.toString();
+    }
+
+    public void choosePersonActivity(View view){
+        Intent intent = new Intent(TaskAddActivity.this, ChooseUserActivity.class);
+        intent.putExtra("Task Name", task.getTaskName());
+        startActivity(intent);
+        Toast.makeText(this, "clicked user button", Toast.LENGTH_SHORT).show();
     }
 
 }

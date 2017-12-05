@@ -36,25 +36,24 @@ public class OpenedTaskActivity extends AppCompatActivity {
 
         //getting current task
         FirebaseDatabase.getInstance().getReference().child("tasks").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            Task task = snapshot.getValue(Task.class);
-                            if(task.getTaskName().equals(taskName)){
-                                currentTask = task;
-                                Toast.makeText(OpenedTaskActivity.this, "currentTask = task;", Toast.LENGTH_SHORT).show();
-                                updateInfo();
-                            }
-                        }
-                    }
             @Override
-                    public void onCancelled(DatabaseError databaseError) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Task task = snapshot.getValue(Task.class);
+                    if(task.getTaskName().equals(taskName)){
+                        currentTask = task;
+                        updateInterface();
+                        Toast.makeText(OpenedTaskActivity.this, "Tasks onDataChange OpenedTaskActivity", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+            }
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
 
-    private void updateInfo() {
+    private void updateInterface() {
         setContentView(R.layout.activity_opened_task);
         setTitle(taskName);
 

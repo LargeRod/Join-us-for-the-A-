@@ -37,8 +37,9 @@ public class PeopleFragment extends Fragment {
 
         View view  = inflater.inflate(R.layout.fragment_people, container, false);
         users = new ArrayList<>();
-        peopleList= (ListView) view.findViewById(R.id.peopleList);
+        peopleList = (ListView) view.findViewById(R.id.peopleList);
         PeopleCustomAdapter adapter = new PeopleCustomAdapter(getActivity(), users);
+
 
         return view ;
     }

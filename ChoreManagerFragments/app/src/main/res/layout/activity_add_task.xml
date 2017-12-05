@@ -25,12 +25,16 @@
                 android:id="@+id/profileIcon"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-                app:srcCompat="@drawable/hollow_add" />
+                android:background="@drawable/hollow_add"
+                android:clickable="true"
+                android:onClick="choosePersonActivity" />
 
             <LinearLayout
                 android:id="@+id/nameAndAssignment"
                 android:layout_width="100dp"
                 android:layout_height="65dp"
+                android:clickable="true"
+                android:onClick="choosePersonActivity"
                 android:orientation="vertical">
 
                 <TextView

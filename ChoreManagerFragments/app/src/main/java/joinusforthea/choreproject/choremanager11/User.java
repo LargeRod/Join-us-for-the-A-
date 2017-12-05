@@ -1,6 +1,8 @@
 package joinusforthea.choreproject.choremanager11;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by admin on 28/11/2017.
@@ -14,11 +16,9 @@ class User implements Serializable{
 
     private String name;
     private String avatar;
-    private Task[] currentTasks;
-    private Task[] completedTasks;
+    private List<Task> currentTasks = new ArrayList<>();
+    private List<Task> completedTasks = new ArrayList<>();
     private String id;
-
-
 
     public User(String name, String avatar, String id) {
         this.name = name;
@@ -53,5 +53,22 @@ class User implements Serializable{
     public String toString(){
         return getName();
     }
+
+    public void addTask(Task task){
+        currentTasks.add(task);
+    }
+
+    public List<Task> getCurrentTasks(){
+        return currentTasks;
+    }
+
+    public void completeTask(Task task){
+        completedTasks.add(task);
+    }
+
+    public List<Task> getCompletedTasks(){
+        return completedTasks;
+    }
+
 
 }

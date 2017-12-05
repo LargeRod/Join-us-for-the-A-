@@ -14,7 +14,7 @@
         android:textSize="30sp" />
 
     <ListView
-        android:id="@+id/peopleList"
+        android:id="@+id/choosePeopleList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"
