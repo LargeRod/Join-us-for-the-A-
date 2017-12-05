@@ -44,6 +44,7 @@ public class TasksFragment extends Fragment {
     ListView listViewTask;
     EditText taskNameEditTextView;
 
+
     private LinearLayout taskLayout;
     private ImageButton buttonAddTask;
 
@@ -52,9 +53,8 @@ public class TasksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //firebase instantiations
         databaseTasks = FirebaseDatabase.getInstance().getReference("tasks");
-        tasks = new ArrayList<>();
-
         View view = inflater.inflate(R.layout.fragment_tasks, container, false);
+        tasks = new ArrayList<>();
         listViewTask = (ListView) view.findViewById(R.id.taskList);
 
         taskNameEditTextView = (EditText) view.findViewById(R.id.newTaskName);
@@ -64,9 +64,14 @@ public class TasksFragment extends Fragment {
         buttonAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //called from a task being clicked
+
+                //casting the findViewById to a text view, then getting text and converting to string
+                Task task = addTask();
+                String taskName = taskNameEditTextView.getText().toString();
                 Intent intent = new Intent(getActivity(), TaskAddActivity.class);
-                getActivity().startActivity(intent);
-                addTask();
+                intent.putExtra("Task", task);
+                startActivity(intent);
             }
         });//end of the onclick listener
 
@@ -97,7 +102,6 @@ public class TasksFragment extends Fragment {
                 }
 
                 //creating adapter
-                //EV: USING NUMBER 2 AS A TEST
                 TaskCustomAdapter taskAdapter = new TaskCustomAdapter(getActivity(), tasks);
                 //attaching adapter to the listview
                 listViewTask.setAdapter(taskAdapter);
@@ -107,14 +111,14 @@ public class TasksFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
-    }
+        });//end of addValueEventListener
+    }//end of onStart
 
 //    public void addItem(View view){
 //       Toast.makeText(getContext(), "CLICKED ADD ITEM", Toast.LENGTH_SHORT).show();
 //    }
 
-    public void addTask() {
+    public Task addTask() {
         //getting the values to save
         String name = taskNameEditTextView.getText().toString().trim();
 
@@ -126,7 +130,7 @@ public class TasksFragment extends Fragment {
             String id = databaseTasks.push().getKey();
 
             //creating an Product Object
-            Task task = new Task(name);
+            Task task = new Task(name, id);
 
             //Saving the Product
             databaseTasks.child(id).setValue(task);
@@ -136,10 +140,12 @@ public class TasksFragment extends Fragment {
 
             //displaying a success toast
             Toast.makeText(getActivity(), "Task created", Toast.LENGTH_LONG).show();
+            return task;
         } else {
             //if the value is not given displaying a toast
             Toast.makeText(getActivity(), "Please enter a new task name", Toast.LENGTH_LONG).show();
         }
+        return null;
     }
 
 

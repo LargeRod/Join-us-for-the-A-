@@ -1,25 +1,25 @@
 package joinusforthea.choreproject.choremanager11;
 
+import java.io.Serializable;
 import java.util.Date;
-
-import javax.xml.datatype.Duration;
 
 /**
  * Created by admin on 28/11/2017.
  */
 
-public class Task {
+public class Task implements Serializable {
 
 
     private Item[] requiredEquipment;
-    private String note;
+    private String notes;
     private boolean completed;
     private User creator;
     private String footNote;
-    private Duration duration;
+    private String duration;
     private User assignedTo;
     private String taskName;
     private Date deadline;
+    private String id;
 
     //EV: Constructor
 
@@ -32,16 +32,19 @@ public class Task {
 
 //temporary constructor for when useres arent implemented yet
 
-    public Task(String name){
+    public Task(String name, String idNumber){
+        id = idNumber;
         taskName = name;
     }
 
     public Task(){
-
+        //needed empty constructor
     }
 
 
 //EV: getters and setters
+
+
 
     public String getTaskName() {
         return taskName;
@@ -67,12 +70,12 @@ public class Task {
         this.requiredEquipment = requiredEquipment;
     }
 
-    public String getNote() {
-        return note;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setNotes(String note) {
+        this.notes = note;
     }
 
     public boolean isCompleted() {
@@ -99,11 +102,11 @@ public class Task {
         this.footNote = footNote;
     }
 
-    public Duration getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -119,6 +122,7 @@ public class Task {
         return getTaskName();
     }
 
-
-
+    public String getId() {
+        return id;
+    }
 }

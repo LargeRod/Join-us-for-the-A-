@@ -1,5 +1,6 @@
 package joinusforthea.choreproject.choremanager11;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,16 +9,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.List;
 //EV: inspired by Mitch Tabian and the labs
 /**
  * Created by admin on 07/11/2017.
  */
 
-public class PeopleCustomAdapter extends ArrayAdapter<String> {
+public class PeopleCustomAdapter extends ArrayAdapter<User> {
     private final Context context;
-    private final String[] peopleNames;
+    private final List<User> peopleNames;
 
-    public PeopleCustomAdapter(Context context, String[] names) {
+    public PeopleCustomAdapter(Activity context, List<User> names) {
         super(context, R.layout.custom_people_layout, names);
         this.context = context;
         this.peopleNames = names;
@@ -39,7 +42,7 @@ public class PeopleCustomAdapter extends ArrayAdapter<String> {
         }
         else {
 
-            personName.setText(peopleNames[position]);
+            personName.setText(peopleNames.get(position).toString());
             numTasks.setText("Number of tasks : "+(position*2-position%3));
             nextTask.setText("Next Task: you know what you have to do");
         }
