@@ -17,7 +17,7 @@
             android:clickable="true">
 
             <ImageButton
-                android:id="@+id/newFoodButton"
+                android:id="@+id/newToolButton"
                 android:layout_width="50dp"
                 android:layout_height="fill_parent"
                 android:backgroundTint="@color/CLEAR"

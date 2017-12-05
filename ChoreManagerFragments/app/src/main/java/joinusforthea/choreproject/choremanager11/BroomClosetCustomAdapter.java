@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.List;
 //EV: inspired by Mitch Tabian
 /**
  * Created by LargeRod on 2017-11-23.
@@ -14,27 +16,27 @@ import android.widget.TextView;
  */
 //Note this code is just a placeholder for now
 
-public class ItemCustomAdapter extends ArrayAdapter<String> {
+public class BroomClosetCustomAdapter extends ArrayAdapter<BroomClosetItems> {
     private final Context context;
-    private final String[] myChores;
+    List<BroomClosetItems> items;
 
-    public ItemCustomAdapter(Context context, String[] choreList) {
-        super(context, R.layout.custom_chore_layout, choreList);
+    public BroomClosetCustomAdapter(Context context, List<BroomClosetItems> items) {
+        super(context, R.layout.custom_chore_layout, items);
         this.context = context;
-        this.myChores = choreList;
+        this.items = items;
     }
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.custom_item_layout, parent, false);
-        TextView choreNameTextField = (TextView) rowView.findViewById(R.id.itemNameTextView);
-        ImageView choreImage = (ImageView) rowView.findViewById(R.id.icon);
-        TextView choreFootnote = (TextView) rowView.findViewById(R.id.itemFootnoteTextView);
 
-        choreNameTextField.setText(myChores[position]);
-        choreNameTextField.setText(myChores[position]);
-        choreFootnote.setText("Amount: 1");
+        TextView choreNameTextField = (TextView) rowView.findViewById(R.id.newToolText);
 
-
+        BroomClosetItems item = items.get(position);
+        choreNameTextField.setText(item.getItemName());
         return rowView;
     }
+
+
 }
+
+
