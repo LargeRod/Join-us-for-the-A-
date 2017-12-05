@@ -25,7 +25,6 @@ public class CupboardFridgeAdapter extends ArrayAdapter<CupboardFridgeItems> {
         this.items = items;
     }
 
-
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View listViewItem = inflater.inflate(R.layout.custom_fridge_layout, parent, false);

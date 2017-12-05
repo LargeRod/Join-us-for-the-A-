@@ -25,11 +25,12 @@ public class BroomClosetCustomAdapter extends ArrayAdapter<BroomClosetItems> {
         this.context = context;
         this.items = items;
     }
+
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.custom_item_layout, parent, false);
 
-        TextView choreNameTextField = (TextView) rowView.findViewById(R.id.newToolText);
+        TextView choreNameTextField = (TextView) rowView.findViewById(R.id.itemNameTextView);
 
         BroomClosetItems item = items.get(position);
         choreNameTextField.setText(item.getItemName());
