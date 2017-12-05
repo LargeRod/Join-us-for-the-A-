@@ -143,14 +143,17 @@ public class ChooseUserActivity extends AppCompatActivity{
         //getting the specified task reference
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("users").child(id);
         //updating object
-        Toast.makeText(this, selectedUser.getTest(), Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), "Updated Firebase for user", Toast.LENGTH_SHORT).show();
-        //dR.push();
+
+        //*************** THIS DOESNT BREAK IT BUT ALSO DOES NOTHING
+        dR.push();
     }
     private void updateTask(Task t, String id) {
         //getting the specified task reference
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("tasks").child(id);
         //updating object
+
+        //*************** THIS DOESNT BREAK IT BUT ALSO DOES NOTHING
         dR.push();
         Toast.makeText(getApplicationContext(), "Updated Firebase task "+t.getAssignedTo(), Toast.LENGTH_SHORT).show();
     }
