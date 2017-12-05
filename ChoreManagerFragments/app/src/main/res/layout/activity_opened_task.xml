@@ -106,11 +106,15 @@
                         android:layout_gravity="center"
                         app:srcCompat="@drawable/clock" />
 
-                    <NumberPicker
-                        android:id="@+id/durationWheel"
+                    <EditText
+                        android:id="@+id/durationText"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:hint="Time"
+                        android:inputType="time" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -121,9 +125,11 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/calenderAndDue"
+                    android:id="@+id/dateLayout"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
+                    android:clickable="true"
+                    android:onClick="showDatePickerDialog"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -131,15 +137,18 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
+                        android:onClick="showDatePickerDialog"
                         app:srcCompat="@drawable/schedule" />
 
                     <TextView
-                        android:id="@+id/due"
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:text="Today"
-                        android:textSize="16sp" />
+                        android:id="@+id/dateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:onClick="showDatePickerDialog"
+                        android:text="NotSetYet"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -264,13 +273,13 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <EditText
+    <TextView
         android:id="@+id/notesEditTextView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="@android:color/transparent"
         android:ems="10"
-        android:inputType="textMultiLine"
-        android:textAlignment="viewStart" />
+        android:gravity="top"
+        android:inputType="textMultiLine" />
 
 </LinearLayout>
