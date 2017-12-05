@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -25,15 +26,16 @@ public class MainActivity extends AppCompatActivity
     //added automatically
     NavigationView navigationView;
     Toolbar toolbar = null;
-
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
+
 
 
     @Override
     //on create was added automatically
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,8 +50,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-        //EV: creating the unassigned user
-        User unassigned = new User("unassigned","R.drawable.hollow_add");
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -164,7 +165,12 @@ public class MainActivity extends AppCompatActivity
 
     public void openTask(View view){
         //called from a task being clicked
+
+        //casting the findViewById to a text view, then getting text and converting to string
+        String taskName = ((TextView) view.findViewById(R.id.choreNameTextView)).getText().toString();
+
         Intent intent = new Intent(MainActivity.this, OpenedTaskActivity.class);
+        intent.putExtra("Task Name", taskName);
         startActivity(intent);
     }
 
@@ -172,10 +178,6 @@ public class MainActivity extends AppCompatActivity
         //TODO add comment weeeeeeeeeeeeeeeee
         Intent intent = new Intent(MainActivity.this, MessageActivity.class);
         startActivity(intent);
-    }
-
-    public void addItem(View view){
-        Toast.makeText(this, "Clicked add item", Toast.LENGTH_SHORT).show();
     }
 
 }

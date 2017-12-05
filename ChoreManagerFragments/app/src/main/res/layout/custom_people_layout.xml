@@ -14,11 +14,12 @@
         android:layout_height="75dp"
         android:layout_gravity="center|start"
         android:background="@color/CLEAR"
+        android:onClick="openProfile"
         android:paddingBottom="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter" />
     <!--app:srcCompat="@drawable/hollow_add" />-->
 
     <LinearLayout
@@ -62,6 +63,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center|start"
         android:background="@color/CLEAR"
+        android:onClick="openMessages"
         android:paddingBottom="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="25dp"
