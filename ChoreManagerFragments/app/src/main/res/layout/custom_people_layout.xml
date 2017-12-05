@@ -8,17 +8,14 @@
     <!--TODO make it pretty @LargeRod
     -->
 
-    <ImageButton
-        android:id="@+id/avaterImage"
+    <ImageView
+        android:id="@+id/avatarImage"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_gravity="center|start"
         android:background="@color/CLEAR"
         android:onClick="openProfile"
-        android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
+        android:padding="15dp"
         android:scaleType="fitCenter" />
     <!--app:srcCompat="@drawable/hollow_add" />-->
 

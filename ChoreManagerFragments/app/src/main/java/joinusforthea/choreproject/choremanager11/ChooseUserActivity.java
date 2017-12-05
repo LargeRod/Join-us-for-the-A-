@@ -23,7 +23,6 @@ public class ChooseUserActivity extends AppCompatActivity{
     List<User> peopleArray;
     ListView listView;
     PeopleCustomAdapter adapter;
-    private String[] avatarArray = {"man.png","man1.png" ,"man2.png" ,"man3.png" ,"man4.png","girl.png","girl1.png","boy.png","boy1.png"};
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

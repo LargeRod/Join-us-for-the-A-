@@ -64,15 +64,15 @@ public class PeopleFragment extends Fragment {
                 users.clear();
 
                 //iterating through all the nodes
+                //this ads them to the array list
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //getting Users
-                    User u = postSnapshot.getValue(User.class);
+                    User user = postSnapshot.getValue(User.class);
                     //adding user to the list
-                    users.add(u);
+                    users.add(user);
                 }
 
                 //creating adapter
-                //EV: USING NUMBER 2 AS A TEST
                 PeopleCustomAdapter userAdapter = new PeopleCustomAdapter(getActivity(), users);
                 //attaching adapter to the listview
                 peopleList.setAdapter(userAdapter);

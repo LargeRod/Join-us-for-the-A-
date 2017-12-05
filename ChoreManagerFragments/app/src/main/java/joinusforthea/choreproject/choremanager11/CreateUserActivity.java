@@ -2,6 +2,9 @@ package joinusforthea.choreproject.choremanager11;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,20 +23,33 @@ import java.util.List;
 
 public class CreateUserActivity extends AppCompatActivity{
 
+    EditText nameView;
     DatabaseReference databasePeople;
     List<User> peopleArray;
     ListView listView;
     PeopleCustomAdapter adapter;
-    private String[] avatarArray = {"man.png","man1.png" ,"man2.png" ,"man3.png" ,"man4.png","girl.png","girl1.png","boy.png","boy1.png"};
+    ImageButton[] imageButtons;
+    String selectedAvatar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        databasePeople = FirebaseDatabase.getInstance().getReference("items");
-        peopleArray = new ArrayList<>();
-        listView = (ListView) findViewById(R.id.peopleList);
-        adapter = new PeopleCustomAdapter(CreateUserActivity.this,peopleArray);
 
+        databasePeople = FirebaseDatabase.getInstance().getReference("users");
+        peopleArray = new ArrayList<>();
+        adapter = new PeopleCustomAdapter(CreateUserActivity.this,peopleArray);
         setContentView(R.layout.activity_create_user);
+
+        ImageButton[] ib = {(ImageButton)findViewById(R.id.a0),
+                (ImageButton)findViewById(R.id.a1),
+                (ImageButton)findViewById(R.id.a2),
+                (ImageButton)findViewById(R.id.a3),
+                (ImageButton)findViewById(R.id.a4),
+                (ImageButton)findViewById(R.id.a5),
+                (ImageButton)findViewById(R.id.a6),
+                (ImageButton)findViewById(R.id.a7),
+                (ImageButton)findViewById(R.id.a8)};
+        imageButtons = ib;
+
 //        personLayout.setOnClickListener(new View.OnClickListener() {
 //
 //            @Override
@@ -70,16 +86,88 @@ public class CreateUserActivity extends AppCompatActivity{
         });//end of addValueEventListener
     }//end of onStart
 
-    public void clickedDone(){
-        //EV: creating the unassigned user//getting a unique id using push().getKey() method
-        //it will create a unique id and we will use it as the Primary Key for our Product
-        String id = databasePeople.push().getKey();
-        //creating a User Object
-        User u = new User("Parker","@drawable/man4.png", id);
-        //Saving the User
-        databasePeople.child(id).setValue(u);
-        Toast.makeText(this, "added user called "+u.getName(), Toast.LENGTH_SHORT).show();
+
+    public void highlightAvatar(View v) {
+        for (ImageButton butt: imageButtons) {
+            float scale = getResources().getDisplayMetrics().density;
+            int dpAsPixels = (int) (10*scale + 0.5f);
+            butt.setPadding(dpAsPixels,dpAsPixels,dpAsPixels,dpAsPixels);
+        }
+        switch (v.getId()){
+            case R.id.a0:
+                v.setPadding(0,0,0,0);
+                setSelectedAvatar((ImageButton)v);
+                break;
+            case R.id.a1:
+                v.setPadding(0,0,0,0);
+                setSelectedAvatar((ImageButton)v);
+                break;
+            case R.id.a2:
+                v.setPadding(0,0,0,0);
+                setSelectedAvatar((ImageButton)v);
+                break;
+            case R.id.a3:
+                v.setPadding(0,0,0,0);
+                setSelectedAvatar((ImageButton)v);
+                break;
+            case R.id.a4:
+                v.setPadding(0,0,0,0);
+                setSelectedAvatar((ImageButton)v);
+                break;
+            case R.id.a5:
+                v.setPadding(0,0,0,0);
+                setSelectedAvatar((ImageButton)v);
+                break;
+            case R.id.a6:
+                v.setPadding(0,0,0,0);
+                setSelectedAvatar((ImageButton)v);
+                break;
+            case R.id.a7:
+                v.setPadding(0,0,0,0);
+                setSelectedAvatar((ImageButton)v);
+                break;
+            case R.id.a8:
+                v.setPadding(0,0,0,0);
+                setSelectedAvatar((ImageButton)v);
+                break;
+        }
     }
 
+    //This class sets the clicked avatar to be higlighted, and will deslect any other
 
+
+    public String getSelectedAvatar() {
+        return selectedAvatar;
+    }
+
+    public void setSelectedAvatar(ImageButton v) {
+        String tag = v.getTag().toString();
+        //selectedAvatar = Resources.getSystem(tag.toString());
+        //taken from https://stackoverflow.com/questions/15488238/using-android-getidentifier
+        selectedAvatar = tag;
+
+    }
+
+    public void clickedDone(View v){
+        nameView = (EditText)findViewById(R.id.nameTextEdit);
+        String name = nameView.getText().toString();
+        String avatar = getSelectedAvatar();
+
+        if(name.equals("")){
+            Toast.makeText(this, "Please enter your name", Toast.LENGTH_LONG).show();
+        }
+        else if(avatar==null){
+            Toast.makeText(this, "Please select an avatar", Toast.LENGTH_LONG).show();
+        }
+        else {
+            //EV: creating the unassigned user//getting a unique id using push().getKey() method
+            //it will create a unique id and we will use it as the Primary Key for our Product
+            String id = databasePeople.push().getKey();
+            //creating a User Object
+            User u = new User(name, avatar, id);
+            //Saving the User
+            databasePeople.child(id).setValue(u);
+            Toast.makeText(this, "added user called " + u.getName(), Toast.LENGTH_SHORT).show();
+        }
+    }
 }

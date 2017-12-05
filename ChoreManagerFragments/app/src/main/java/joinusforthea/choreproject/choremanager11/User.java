@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 class User implements Serializable{
 
-    public User() {
+    public User(){
         //needed empty constructor
     }
 

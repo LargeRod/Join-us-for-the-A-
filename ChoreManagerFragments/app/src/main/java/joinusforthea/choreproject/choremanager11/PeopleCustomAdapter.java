@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 //EV: inspired by Mitch Tabian and the labs
@@ -18,12 +19,12 @@ import java.util.List;
 
 public class PeopleCustomAdapter extends ArrayAdapter<User> {
     private final Context context;
-    private final List<User> peopleNames;
+    private final List<User> user;
 
     public PeopleCustomAdapter(Activity context, List<User> names) {
         super(context, R.layout.custom_people_layout, names);
         this.context = context;
-        this.peopleNames = names;
+        this.user = names;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -32,7 +33,7 @@ public class PeopleCustomAdapter extends ArrayAdapter<User> {
         TextView personName = (TextView) view.findViewById(R.id.personNameTextView);
         TextView numTasks = (TextView) view.findViewById(R.id.numTasksTextView);
         TextView nextTask = (TextView) view.findViewById(R.id.nextTaskTextView);
-        ImageView avatar = (ImageView) view.findViewById(R.id.avaterImage);
+        ImageView avatar = (ImageView) view.findViewById(R.id.avatarImage);
         //only needed when changing the first one to dots
         ImageButton button = (ImageButton) view.findViewById(R.id.chatBubbleImage);
 
@@ -41,8 +42,12 @@ public class PeopleCustomAdapter extends ArrayAdapter<User> {
             button.setImageResource(R.drawable.dots);
         }
         else {
-
-            personName.setText(peopleNames.get(position).toString());
+            String name = user.get(position).getAvatar();
+            //this makes an int out of a string resource file
+            String a = user.get(position).getAvatar();
+            int resID = getContext().getResources().getIdentifier(""+a, "drawable", getContext().getPackageName());
+            personName.setText(user.get(position).toString());
+            view.findViewById(R.id.avatarImage).setBackgroundResource(resID);
             numTasks.setText("Number of tasks : "+(position*2-position%3));
             nextTask.setText("Next Task: you know what you have to do");
         }
