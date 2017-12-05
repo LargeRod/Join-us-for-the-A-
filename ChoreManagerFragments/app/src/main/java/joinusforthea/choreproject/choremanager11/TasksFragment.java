@@ -65,13 +65,17 @@ public class TasksFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //called from a task being clicked
-
                 //casting the findViewById to a text view, then getting text and converting to string
-                Task task = addTask();
-                String taskName = taskNameEditTextView.getText().toString();
-                Intent intent = new Intent(getActivity(), TaskAddActivity.class);
-                intent.putExtra("Task", task);
-                startActivity(intent);
+                if(!taskNameEditTextView.equals("")){
+                    Task task = addTask();
+                    String taskName = taskNameEditTextView.getText().toString();
+                    Intent intent = new Intent(getActivity(), TaskAddActivity.class);
+                    intent.putExtra("Task", task);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getActivity(), "Please enter a new task name", Toast.LENGTH_SHORT).show();
+                }
             }
         });//end of the onclick listener
 

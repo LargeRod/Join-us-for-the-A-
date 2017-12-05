@@ -15,7 +15,7 @@ import android.widget.GridView;
 public class ShoppingFragment extends Fragment {
 
 
-    String[] matList = {"Plunger", "Laxatives", "Toilet seat","Bleach","Rubber gloves","Gas mask", "Laxatives", "Toilet seat","Bleach","Rubber gloves","Gas mask", "Laxatives", "Toilet seat","Bleach","Rubber gloves","Gas mask", "Laxatives", "Toilet seat","Bleach","Rubber gloves","Gas mask", "Laxatives", "Toilet seat","Bleach","Rubber gloves","Gas mask", "Laxatives", "Toilet seat","Bleach","Rubber gloves","Gas mask", "Laxatives", "Toilet seat","Bleach","Rubber gloves","Gas mask", "Laxatives", "Toilet seat","Bleach","Rubber gloves","Gas mask"};
+    String[] matList = {"Plunger", "Laxatives", "Toilet seat","Bleach","Rubber gloves","Gas mask"};
 
     String[] foodList = {"Eggs", "Milk", "Cheese", "Food grade kitty litter", "Granola Bars","Bleach","Diet Bleach"};
 

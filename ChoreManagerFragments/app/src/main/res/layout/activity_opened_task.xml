@@ -265,7 +265,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/noteDetails"
+        android:id="@+id/notesEditTextView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="@android:color/transparent"

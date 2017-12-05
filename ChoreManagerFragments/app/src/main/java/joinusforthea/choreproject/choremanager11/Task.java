@@ -26,6 +26,7 @@ public class Task implements Serializable {
     public Task(String name, User user) {
         taskName = name;
         creator = user;
+        notes = "";
         //by default, the class should be assigned to the user called "unassigned"
         //assignedTo = unassigned;
     }
@@ -35,6 +36,7 @@ public class Task implements Serializable {
     public Task(String name, String idNumber){
         id = idNumber;
         taskName = name;
+        notes = "";
     }
 
     public Task(){
