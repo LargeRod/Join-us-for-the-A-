@@ -67,11 +67,15 @@ public class TasksFragment extends Fragment {
                 //called from a task being clicked
                 //casting the findViewById to a text view, then getting text and converting to string
                 if(!taskNameEditTextView.equals("")){
-                    Task task = addTask();
                     String taskName = taskNameEditTextView.getText().toString();
                     Intent intent = new Intent(getActivity(), TaskAddActivity.class);
-                    intent.putExtra("Task", task);
-                    startActivity(intent);
+                    Task task = addTask();
+                    //add task returns null if the name isnt entered, only start activity if
+                    //theres a new task name
+                    if(task!=null) {
+                        intent.putExtra("Task", task);
+                        startActivity(intent);
+                    }
                 }
                 else{
                     Toast.makeText(getActivity(), "Please enter a new task name", Toast.LENGTH_SHORT).show();

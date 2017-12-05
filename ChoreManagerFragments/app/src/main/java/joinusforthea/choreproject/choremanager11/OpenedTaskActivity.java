@@ -3,7 +3,6 @@ package joinusforthea.choreproject.choremanager11;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +23,9 @@ public class OpenedTaskActivity extends AppCompatActivity {
     Task currentTask;
     String taskName;
     TextView notes;
+    TextView dateText;
+    DialogFragment dateFragment;
+    String dueDate;
 
 
     @Override
@@ -49,36 +51,35 @@ public class OpenedTaskActivity extends AppCompatActivity {
                     public void onCancelled(DatabaseError databaseError) {
                     }
                 });
-
-
-
-
-        //getting valuse from the firebase database
-        //Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-//      //iterating through all the nodes
     }
+
 
     private void updateInfo() {
         setContentView(R.layout.activity_opened_task);
-        notes = (TextView)findViewById(R.id.notesEditTextView);
-        Toast.makeText(this, "notes is null?: "+(notes==null), Toast.LENGTH_SHORT).show();
-        notes.setText(currentTask.getNotes());
         setTitle(taskName);
+
+        notes = (TextView)findViewById(R.id.notesEditTextView);
+        notes.setText(currentTask.getNotes());
+
+        dateText = (TextView) findViewById(R.id.dateText);
+        dateText.setText(currentTask.getDueDate());
+
     }
 
-    //calling the DatePickerFragment to display a date picker dialog
-    public void showDatePickerDialog(View v) {
+//    //calling the DatePickerFragment to display a date picker dialog
+//    public void showDatePickerDialog(View v) {
+//
+//        dateFragment = new DatePickerFragment();
+//        dateFragment.show(getFragmentManager(), "datePicker");
+//        Toast.makeText(this, "Date from showDatePickerDialog: " + dateFragment.toString(), Toast.LENGTH_LONG).show();
+//        setDate(dateFragment.toString());
+//        updateInfo();
+//    }
+//
+//    public void setDate(String date) {
+//        dueDate = date;
+//        Toast.makeText(this, "this is the date: "+date, Toast.LENGTH_SHORT).show();
+//    }
 
-        DialogFragment dateFragment = new DatePickerFragment();
-        dateFragment.show(getFragmentManager(), "datePicker");
-
-        //MUST OBTAIN DATE FROM DATEPICKERFRAGMENT AND CALL SETDATE WITH IT TO SET
-        //IT IN THE VIEW
-    }
-
-    public void setDate(String date) {
-        TextView dateText = (TextView) findViewById(R.id.dateText);
-        dateText.setText(date);
-    }
 
 }

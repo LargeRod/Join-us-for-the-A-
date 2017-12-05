@@ -67,12 +67,17 @@
             android:parentActivityName=".MainActivity">
         </activity> <activity
         android:name=".TaskAddActivity"
-        android:label="New Task">
-    </activity>
+        android:label="New Task"
+        android:parentActivityName=".MainActivity">>
+        </activity>
         <activity android:name=".MessageActivity"
             android:label="Messages"
             android:parentActivityName=".MainActivity">
-        </activity>
+        </activity><activity
+        android:name=".CreateUserActivity"
+        android:label="Add User"
+        android:parentActivityName=".SettingsActivity">
+    </activity>
     </application>
 
 </manifest>

@@ -85,6 +85,7 @@
             android:id="@+id/durationAndDue"
             android:layout_width="150dp"
             android:layout_height="100dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <LinearLayout
@@ -129,7 +130,6 @@
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:clickable="true"
-                    android:onClick="showDatePickerDialog"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -137,7 +137,6 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
-                        android:onClick="showDatePickerDialog"
                         app:srcCompat="@drawable/schedule" />
 
                     <TextView
@@ -146,7 +145,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:onClick="showDatePickerDialog"
                         android:text="NotSetYet"
                         android:textSize="18sp" />
 

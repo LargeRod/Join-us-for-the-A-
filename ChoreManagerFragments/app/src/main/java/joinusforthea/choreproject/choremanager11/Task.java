@@ -1,7 +1,6 @@
 package joinusforthea.choreproject.choremanager11;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by admin on 28/11/2017.
@@ -18,7 +17,7 @@ public class Task implements Serializable {
     private String duration;
     private User assignedTo;
     private String taskName;
-    private Date deadline;
+    private String dueDate;
     private String id;
 
     //EV: Constructor
@@ -56,12 +55,12 @@ public class Task implements Serializable {
         this.taskName = taskName;
     }
 
-    public Date getDeadline() {
-        return deadline;
+    public String getDueDate() {
+        return dueDate;
     }
 
-    public void setDeadline(Date deadline) {
-        this.deadline = deadline;
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 
     public Item[] getRequiredEquipment() {
