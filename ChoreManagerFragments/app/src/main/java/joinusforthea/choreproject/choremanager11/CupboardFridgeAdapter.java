@@ -33,7 +33,7 @@ public class CupboardFridgeAdapter extends ArrayAdapter<CupboardFridgeItems> {
         TextView choreNameTextField = (TextView) listViewItem.findViewById(R.id.foodNameTextView);
 
         CupboardFridgeItems item = items.get(position);
-        choreNameTextField.setText(item.getProductName());
+        choreNameTextField.setText(item.getfoodName());
 
         return listViewItem;
     }

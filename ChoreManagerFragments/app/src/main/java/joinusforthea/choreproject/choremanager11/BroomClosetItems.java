@@ -13,7 +13,10 @@ public class BroomClosetItems {
     public BroomClosetItems(){
 
     }
-
+    public BroomClosetItems(String id, String productname){
+        _id = id;
+        _productname = productname;
+    }
     public BroomClosetItems(String productname){
         _productname = productname;
     }

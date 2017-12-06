@@ -1,9 +1,13 @@
 package joinusforthea.choreproject.choremanager11;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -42,9 +46,11 @@ public class BroomClosetActivity extends AppCompatActivity {
                 addMaterial();
             }
         });
+
     }
 
     protected void onStart() {
+
         super.onStart();
         //attaching value event listener
         databaseTasks.addValueEventListener(new ValueEventListener() {
@@ -67,6 +73,17 @@ public class BroomClosetActivity extends AppCompatActivity {
 
             }
         });
+        listView = (ListView) findViewById(R.id.listOfTools);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                BroomClosetItems material = materials.get(i);
+                String id = databaseTasks.child("material").push().getKey();
+
+                showUpdateDeleteDialog(id, material.getItemName());
+                return true;
+            }
+        });
     }
 
     public void addMaterial() {
@@ -77,7 +94,7 @@ public class BroomClosetActivity extends AppCompatActivity {
 
             String id = databaseTasks.push().getKey();
 
-            BroomClosetItems item = new BroomClosetItems(name);
+            BroomClosetItems item = new BroomClosetItems(id, name);
 
             databaseTasks.child(id).setValue(item);
 
@@ -87,5 +104,56 @@ public class BroomClosetActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), "Please enter an item name", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void updateMaterial(String id, String name) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("material").child(id);
+        BroomClosetItems items = new BroomClosetItems(id, name);
+        dR.setValue(items);
+
+        Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG).show();
+    }
+
+    public void deleteMaterial(String id) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("material").child(id);
+        dR.removeValue();
+
+        Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG).show();
+    }
+
+    private void showUpdateDeleteDialog(final String id, String itemName) {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.broom_closet_update_dialog, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editTextName = (EditText) dialogView.findViewById(R.id.editTextName);
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdateProduct);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDeleteProduct);
+
+        dialogBuilder.setTitle(itemName);
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = editTextName.getText().toString().trim();
+
+                if (!TextUtils.isEmpty(name)) {
+                    updateMaterial(id, name);
+                    b.dismiss();
+                }
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteMaterial(id);
+                b.dismiss();
+            }
+        });
     }
 }

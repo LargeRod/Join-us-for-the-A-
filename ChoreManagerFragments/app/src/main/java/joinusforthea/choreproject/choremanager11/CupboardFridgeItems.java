@@ -9,19 +9,19 @@ import android.widget.EditText;
 public class CupboardFridgeItems {
 
     private String _id;
-    private String _productname;
-    private String _price;
+    private String _foodName;
 
     public CupboardFridgeItems() {
     }
 
-//    public CupboardFridgeItems(String productname, String price) {
-//        _productname = productname;
-//        _price = price;
-//    }
+    public CupboardFridgeItems(String id, String foodName) {
+        _id = id;
+        _foodName = foodName;
+
+    }
 
     public CupboardFridgeItems(String productname){
-        _productname = productname;
+        _foodName = productname;
     }
 
     public void setId(String id) {
@@ -30,16 +30,11 @@ public class CupboardFridgeItems {
     public String getId() {
         return _id;
     }
-    public void setProductName(String productname) {
-        _productname = productname;
+    public void setfoodName(String foodName) {
+        _foodName = foodName;
     }
-    public String getProductName() {
-        return _productname;
+    public String getfoodName() {
+        return _foodName;
     }
-    public void setPrice(String price) {
-        _price = price;
-    }
-    public String getPrice() {
-        return _price;
-    }
+
 }

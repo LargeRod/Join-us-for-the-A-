@@ -1,9 +1,13 @@
 package joinusforthea.choreproject.choremanager11;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -32,7 +36,6 @@ public class CupboardFridgeActivity extends AppCompatActivity {
         databaseItems = FirebaseDatabase.getInstance().getReference("items");
         products = new ArrayList<>();
         listView = (ListView) findViewById(R.id.foodList);
-
         setContentView(R.layout.activity_cupboard_fridge);
 
         buttonAddFood = (ImageButton) findViewById(R.id.newFoodButton);
@@ -40,9 +43,10 @@ public class CupboardFridgeActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                addProduct();
+                addFood();
             }
         });
+
     }
 
 
@@ -69,9 +73,21 @@ public class CupboardFridgeActivity extends AppCompatActivity {
 
             }
         });
+        listView = (ListView) findViewById(R.id.foodList);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                CupboardFridgeItems food = products.get(i);
+                String id = databaseItems.child("items").push().getKey();
+                //String id = food.getId(); null for some reason?
+
+                showUpdateDeleteDialog(id, food.getfoodName());
+                return true;
+            }
+        });
     }
 
-    private void addProduct() {
+    private void addFood() {
         EditText newItem = (EditText) findViewById(R.id.newFoodText);
         String name = newItem.getText().toString();
 
@@ -89,6 +105,56 @@ public class CupboardFridgeActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), "Please enter an item name", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void updateFood(String id, String name) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("items").child(id);
+        CupboardFridgeItems items = new CupboardFridgeItems (id, name);
+        dR.setValue(items);
+
+    }
+
+    public void deleteFood(String id) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("items").child(id);
+        dR.removeValue();
+
+        Toast.makeText(getApplicationContext(), "Item deleted", Toast.LENGTH_LONG).show();
+    }
+
+    private void showUpdateDeleteDialog(final String id, String itemName) {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.fridge_update_dialog, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editTextName = (EditText) dialogView.findViewById(R.id.editTextName);
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdateProduct);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDeleteProduct);
+
+        dialogBuilder.setTitle(itemName);
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = editTextName.getText().toString().trim();
+
+                if (!TextUtils.isEmpty(name)) {
+                    updateFood(id, name);
+                    b.dismiss();
+                }
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteFood(id);
+                b.dismiss();
+            }
+        });
     }
 
 }
