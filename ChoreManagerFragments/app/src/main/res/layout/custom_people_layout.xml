@@ -24,6 +24,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:clickable="true"
+        android:onClick="openProfile"
         android:orientation="vertical"
         android:paddingLeft="10dp">
 

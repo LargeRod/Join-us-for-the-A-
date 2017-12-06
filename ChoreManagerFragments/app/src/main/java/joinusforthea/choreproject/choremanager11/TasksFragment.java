@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +32,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TasksFragment extends Fragment {
+public class TasksFragment extends Fragment{
 
 
     public TasksFragment() {
@@ -42,9 +43,15 @@ public class TasksFragment extends Fragment {
     DatabaseReference databaseTasks;
     List<Task> tasks;
     ListView listViewTask;
-    EditText taskNameEditTextView;
+    EditText newTaskName;
     ImageButton avatarButton;
     View customView;
+    LinearLayout choreTextLayout;
+    TextView taskName;
+    Task currentTask;
+    User currentUser;
+    View view;
+
 
 
     private LinearLayout taskLayout;
@@ -53,28 +60,31 @@ public class TasksFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //firebase instantiations
 
-        //getting reference to the custom chore layout
+
+        //getting reference to the custom chore layout and setting listener
         customView = inflater.inflate(R.layout.custom_task_layout, container, false);
+        choreTextLayout = (LinearLayout) customView.findViewById(R.id.choreTextLayout);
 
         databaseTasks = FirebaseDatabase.getInstance().getReference("tasks");
-        View view = inflater.inflate(R.layout.fragment_tasks, container, false);
+        view = inflater.inflate(R.layout.fragment_tasks, container, false);
         tasks = new ArrayList<>();
         listViewTask = (ListView) view.findViewById(R.id.taskList);
 
-        taskNameEditTextView = (EditText) view.findViewById(R.id.newTaskName);
+        newTaskName = (EditText) view.findViewById(R.id.newTaskName);
 
         //adding on click listener for the buttonAddTask button
         buttonAddTask = (ImageButton) view.findViewById(R.id.newTaskButton);
         buttonAddTask.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 //called from a task being clicked
                 //casting the findViewById to a text view, then getting text and converting to string
-                if(!taskNameEditTextView.equals("")){
-                    String taskName = taskNameEditTextView.getText().toString();
+                if(!newTaskName.getText().toString().isEmpty()){
+                    String taskName = newTaskName.getText().toString();
                     Intent intent = new Intent(getActivity(), TaskAddActivity.class);
+
                     Task task = addTask();
                     //add task returns null if the name isnt entered, only start activity if
                     //theres a new task name
@@ -87,9 +97,8 @@ public class TasksFragment extends Fragment {
 
 
                     if(task!=null) {
-                        //intent.putExtra passes task to the intent
-                        intent.putExtra("passedTaskName", task.getTaskName());
-
+                        //intent.putExtra passes task to the
+                        intent.putExtra("passedTaskName",taskName);
                         startActivity(intent);
 
                     }
@@ -98,6 +107,7 @@ public class TasksFragment extends Fragment {
                     Toast.makeText(getActivity(), "Please enter a new task name", Toast.LENGTH_LONG).show();
                 }
             }
+
         });//end of the onclick listener
 
 
@@ -108,6 +118,8 @@ public class TasksFragment extends Fragment {
 
     //taken from lab 5 firebase
     public void onStart() {
+
+
         super.onStart();
         //attaching value event listener
         databaseTasks.addValueEventListener(new ValueEventListener() {
@@ -136,12 +148,19 @@ public class TasksFragment extends Fragment {
 
             }
         });//end of addValueEventListener
+
+
+
+
+
+
+
     }//end of onStart
 
 
     public Task addTask() {
         //getting the values to save
-        String name = taskNameEditTextView.getText().toString().trim();
+        String name = newTaskName.getText().toString().trim();
 
         //checking if the value is provided
         if (!TextUtils.isEmpty(name)) {
@@ -157,10 +176,10 @@ public class TasksFragment extends Fragment {
             databaseTasks.child(id).setValue(task);
 
             //setting edittext to blank again
-            taskNameEditTextView.setText("");
+            newTaskName.setText("");
 
             //displaying a success toast
-            Toast.makeText(getActivity(), "Task created", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Task created", Toast.LENGTH_SHORT).show();
             return task;
         } else {
             //if the value is not given displaying a toast
@@ -170,4 +189,13 @@ public class TasksFragment extends Fragment {
     }
 
 
+    public void openTaskInfo(View view){
+        //adding on click listener for clicking the task info
+        choreTextLayout = (LinearLayout) customView.findViewById(R.id.choreTextLayout);
+        TextView choreNameTextView =(TextView) view.findViewById(R.id.choreNameTextView);
+        String taskName = choreNameTextView.getText().toString();
+        Intent intent = new Intent(getActivity(), OpenedTaskActivity.class);
+        intent.putExtra("passedTaskName",taskName);
+        startActivity(intent);
+    }
 }

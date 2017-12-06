@@ -34,7 +34,9 @@ public class TaskAddActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-        taskName = (String)getIntent().getStringExtra("passedTaskName");
+        taskName = getIntent().getStringExtra("passedTaskName");
+        Toast.makeText(this, "getting: "+taskName  , Toast.LENGTH_LONG).show();
+
 
         doneButton = (Button) findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +112,7 @@ public class TaskAddActivity extends AppCompatActivity{
 
     public void choosePersonActivity(View view){
         Intent intent = new Intent(TaskAddActivity.this, ChooseUserActivity.class);
+        Toast.makeText(this, "passing: "+taskName  , Toast.LENGTH_LONG).show();
         intent.putExtra("passedTaskName", taskName);
 
         startActivity(intent);

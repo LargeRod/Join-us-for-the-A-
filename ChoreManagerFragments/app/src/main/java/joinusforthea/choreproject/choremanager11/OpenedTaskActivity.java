@@ -3,6 +3,7 @@ package joinusforthea.choreproject.choremanager11;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,7 +37,6 @@ public class OpenedTaskActivity extends AppCompatActivity {
 
         //getting current task
         taskName = getIntent().getStringExtra("passedTaskName");
-        //taskName = getIntent().getStringExtra("Task Name");
         FirebaseDatabase.getInstance().getReference().child("tasks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -78,6 +78,10 @@ public class OpenedTaskActivity extends AppCompatActivity {
 
 
 
+
+    }
+
+    public void releaseTask(View view){
 
     }
 

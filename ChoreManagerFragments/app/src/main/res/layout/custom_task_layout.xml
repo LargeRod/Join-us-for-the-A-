@@ -4,7 +4,8 @@
     android:id="@+id/choreItemLayout"
     android:layout_width="match_parent"
     android:layout_height="75dp"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:tag="choreItemLayout">
 
     <ImageButton
         android:id="@+id/avatarImageButton"
@@ -18,13 +19,18 @@
         android:scaleType="fitCenter" />
 
     <LinearLayout
+        android:id="@+id/choreTextLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:clickable="true"
+        android:contextClickable="true"
+        android:focusable="false"
+        android:longClickable="true"
         android:onClick="openTask"
         android:orientation="vertical"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:tag="choreTextLayout">
 
         <TextView
             android:id="@+id/choreNameTextView"
@@ -45,7 +51,7 @@
     </LinearLayout>
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/checkBox"
         android:layout_width="50dp"
         android:layout_height="match_parent" />
 

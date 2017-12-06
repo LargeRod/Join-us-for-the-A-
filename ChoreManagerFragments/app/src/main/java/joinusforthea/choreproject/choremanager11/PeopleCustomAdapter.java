@@ -28,7 +28,7 @@ public class PeopleCustomAdapter extends ArrayAdapter<User> {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.custom_people_layout, null, false);
+        View view = inflater.inflate(R.layout.custom_people_layout, parent , false);
         TextView personName = (TextView) view.findViewById(R.id.personNameTextView);
         TextView numTasks = (TextView) view.findViewById(R.id.numTasksTextView);
         TextView nextTask = (TextView) view.findViewById(R.id.nextTaskTextView);
