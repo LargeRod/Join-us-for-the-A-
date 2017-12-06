@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,7 +45,6 @@ public class OpenedTaskActivity extends AppCompatActivity {
                     if(task.getTaskName().equals(taskName)){
                         currentTask = task;
                         updateInterface();
-                        Toast.makeText(OpenedTaskActivity.this, "updated interface", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -82,21 +80,5 @@ public class OpenedTaskActivity extends AppCompatActivity {
 
 
     }
-
-//    //calling the DatePickerFragment to display a date picker dialog
-//    public void showDatePickerDialog(View v) {
-//
-//        dateFragment = new DatePickerFragment();
-//        dateFragment.show(getFragmentManager(), "datePicker");
-//        Toast.makeText(this, "Date from showDatePickerDialog: " + dateFragment.toString(), Toast.LENGTH_LONG).show();
-//        setDate(dateFragment.toString());
-//        updateInfo();
-//    }
-//
-//    public void setDate(String date) {
-//        dueDate = date;
-//        Toast.makeText(this, "this is the date: "+date, Toast.LENGTH_SHORT).show();
-//    }
-
 
 }

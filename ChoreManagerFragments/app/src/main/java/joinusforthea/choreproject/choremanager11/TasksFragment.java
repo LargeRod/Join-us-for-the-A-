@@ -56,7 +56,7 @@ public class TasksFragment extends Fragment {
         //firebase instantiations
 
         //getting reference to the custom chore layout
-        customView = inflater.inflate(R.layout.custom_chore_layout, container, false);
+        customView = inflater.inflate(R.layout.custom_task_layout, container, false);
 
         databaseTasks = FirebaseDatabase.getInstance().getReference("tasks");
         View view = inflater.inflate(R.layout.fragment_tasks, container, false);
@@ -89,7 +89,6 @@ public class TasksFragment extends Fragment {
                     if(task!=null) {
                         //intent.putExtra passes task to the intent
                         intent.putExtra("passedTaskName", task.getTaskName());
-                        Toast.makeText(getActivity(), "OpenedTaskActivity Task name should be: "+taskName, Toast.LENGTH_LONG).show();
 
                         startActivity(intent);
 
@@ -139,9 +138,6 @@ public class TasksFragment extends Fragment {
         });//end of addValueEventListener
     }//end of onStart
 
-//    public void addItem(View view){
-//       Toast.makeText(getContext(), "CLICKED ADD ITEM", Toast.LENGTH_SHORT).show();
-//    }
 
     public Task addTask() {
         //getting the values to save

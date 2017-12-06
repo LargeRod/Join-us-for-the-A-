@@ -94,7 +94,6 @@ public class TaskAddActivity extends AppCompatActivity{
         currentTask.setDueDate(dueDate);
 
         dR.setValue(currentTask);
-        Toast.makeText(getApplicationContext(), "Task Updated", Toast.LENGTH_LONG).show();
     }
 
     //picking the date from the calendar
@@ -112,7 +111,6 @@ public class TaskAddActivity extends AppCompatActivity{
     public void choosePersonActivity(View view){
         Intent intent = new Intent(TaskAddActivity.this, ChooseUserActivity.class);
         intent.putExtra("passedTaskName", taskName);
-        Toast.makeText(TaskAddActivity.this, "Task name should be "+taskName, Toast.LENGTH_LONG).show();
 
         startActivity(intent);
     }

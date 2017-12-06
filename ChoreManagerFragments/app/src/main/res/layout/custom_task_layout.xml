@@ -23,7 +23,8 @@
         android:layout_weight="1"
         android:clickable="true"
         android:onClick="openTask"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
 
         <TextView
             android:id="@+id/choreNameTextView"

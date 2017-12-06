@@ -34,7 +34,6 @@ public class ChooseUserActivity extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
         taskName = getIntent().getStringExtra("passedTaskName");
-        Toast.makeText(ChooseUserActivity.this, "Task name: "+taskName, Toast.LENGTH_SHORT).show();
         super.onCreate(savedInstanceState);
         databasePeople = FirebaseDatabase.getInstance().getReference("users");
         setContentView(R.layout.activity_choose_user);
@@ -79,10 +78,6 @@ public class ChooseUserActivity extends AppCompatActivity{
         });//end of firebase thing
 
 
-        //getting current taskName
-
-        Toast.makeText(ChooseUserActivity.this, "Task name: "+taskName, Toast.LENGTH_SHORT).show();
-
         //getting current task
         FirebaseDatabase.getInstance().getReference().child("tasks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -117,7 +112,6 @@ public class ChooseUserActivity extends AppCompatActivity{
                         }
                     }
                     if (set) {
-                        Toast.makeText(ChooseUserActivity.this, "currentTask==null?: " + (currentTask == null), Toast.LENGTH_SHORT).show();
 
                         //EV: firebase doesnt like array lists... :( so ill comment out for now
                         //selectedUser.addTask(currentTask);
@@ -146,7 +140,6 @@ public class ChooseUserActivity extends AppCompatActivity{
     }
 
     public void selectedUser(View view){
-        Toast.makeText(this, "you clicked a user!", Toast.LENGTH_SHORT).show();
         TextView tv = (TextView) view.findViewById(R.id.personNameTextView);
         userName = tv.getText().toString();
 
@@ -161,7 +154,6 @@ public class ChooseUserActivity extends AppCompatActivity{
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("users").child(id);
         //updating user
         dR.setValue(u);
-        Toast.makeText(getApplicationContext(), "Updated Firebase for user", Toast.LENGTH_SHORT).show();
 
     }
     private void updateTask(Task t, String id) {
