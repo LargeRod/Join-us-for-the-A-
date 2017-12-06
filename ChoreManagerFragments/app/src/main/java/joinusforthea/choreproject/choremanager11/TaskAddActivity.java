@@ -51,7 +51,8 @@ public class TaskAddActivity extends AppCompatActivity{
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(TaskAddActivity.this, ChooseUserActivity.class);
+                startActivity(intent);
             }
         });
     }

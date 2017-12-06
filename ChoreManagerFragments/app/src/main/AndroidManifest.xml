@@ -63,7 +63,7 @@
         </activity>
         <activity
             android:name=".OpenedTaskActivity"
-            android:label="task name*******"
+            android:label="task_name"
             android:parentActivityName=".MainActivity">
         </activity>
         <activity
