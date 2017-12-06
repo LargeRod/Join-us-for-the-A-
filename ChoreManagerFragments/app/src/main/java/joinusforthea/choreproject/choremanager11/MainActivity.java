@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-
+//TODO @EMILIE BECAUSE WHO ELSE WILL: while adding task, change user icon. fix add user (2nd user has the same icon as second and next crashes)
 
 
         implements NavigationView.OnNavigationItemSelectedListener {

@@ -109,6 +109,7 @@ public class CreateUserActivity extends AppCompatActivity{
             case R.id.a3:
                 v.setPadding(0,0,0,0);
                 setSelectedAvatar((ImageButton)v);
+                Toast.makeText(this, "selected a3", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.a4:
                 v.setPadding(0,0,0,0);

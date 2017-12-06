@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/peopleListLayout"
     android:layout_width="match_parent"
-    android:layout_height="90dp">
+    android:layout_height="wrap_content"
+    android:padding="5dp">
 
     <!--TODO make it pretty @LargeRod
     -->
@@ -23,14 +24,14 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
 
         <TextView
             android:id="@+id/personNameTextView"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_weight="1"
             android:hint="Person's Name"
             android:paddingTop="5dp"
             android:textAppearance="@android:style/TextAppearance"
@@ -39,7 +40,7 @@
         <TextView
             android:id="@+id/numTasksTextView"
             android:layout_width="fill_parent"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:hint="Number of Tasks"
             android:textSize="14sp" />
@@ -47,7 +48,7 @@
         <TextView
             android:id="@+id/nextTaskTextView"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:hint="Next Task"
             android:paddingBottom="5dp"
             android:textSize="14sp" />
