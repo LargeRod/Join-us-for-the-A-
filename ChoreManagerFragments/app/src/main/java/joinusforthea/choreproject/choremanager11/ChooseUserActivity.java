@@ -32,8 +32,10 @@ public class ChooseUserActivity extends AppCompatActivity{
     String userName; //the name of the user selected
 
     protected void onCreate(Bundle savedInstanceState) {
+        currentTask = (Task) getIntent().getSerializableExtra("task");
+        taskName = currentTask.getTaskName();
+        Toast.makeText(ChooseUserActivity.this, "task is being set", Toast.LENGTH_SHORT).show();
 
-        taskName = getIntent().getStringExtra("task name");
         super.onCreate(savedInstanceState);
         databasePeople = FirebaseDatabase.getInstance().getReference("users");
         setContentView(R.layout.activity_choose_user);

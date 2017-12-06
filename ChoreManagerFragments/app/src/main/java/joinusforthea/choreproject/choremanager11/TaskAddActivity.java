@@ -85,11 +85,9 @@ public class TaskAddActivity extends AppCompatActivity{
     }
 
     public void choosePersonActivity(View view){
-        Toast.makeText(TaskAddActivity.this, "is task.getTaskName() null???  "+(task.getTaskName()==null), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(TaskAddActivity.this, ChooseUserActivity.class);
-        intent.putExtra("task name", task.getTaskName());
+        intent.putExtra("task", task);
         startActivity(intent);
-        Toast.makeText(this, "clicked user button", Toast.LENGTH_SHORT).show();
     }
 
 }
