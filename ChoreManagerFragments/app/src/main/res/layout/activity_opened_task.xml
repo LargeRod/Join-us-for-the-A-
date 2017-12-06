@@ -26,8 +26,8 @@
                 android:id="@+id/profileIcon"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-                android:clickable="true"
-                app:srcCompat="@drawable/boy" />
+                android:background="@drawable/boy"
+                android:clickable="true" />
 
             <LinearLayout
                 android:id="@+id/nameAndAssignment"

@@ -43,6 +43,8 @@ public class TasksFragment extends Fragment {
     List<Task> tasks;
     ListView listViewTask;
     EditText taskNameEditTextView;
+    ImageButton avatarButton;
+    View customView;
 
 
     private LinearLayout taskLayout;
@@ -52,6 +54,10 @@ public class TasksFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //firebase instantiations
+
+        //getting reference to the custom chore layout
+        customView = inflater.inflate(R.layout.custom_chore_layout, container, false);
+
         databaseTasks = FirebaseDatabase.getInstance().getReference("tasks");
         View view = inflater.inflate(R.layout.fragment_tasks, container, false);
         tasks = new ArrayList<>();
@@ -72,21 +78,31 @@ public class TasksFragment extends Fragment {
                     Task task = addTask();
                     //add task returns null if the name isnt entered, only start activity if
                     //theres a new task name
+
+                    //set the avatar in the task list view
+                    avatarButton = (ImageButton) customView.findViewById(R.id.avatarImageButton);
+                    String avtr = task.getAssignedTo().getAvatar();
+                    int resID = getResources().getIdentifier(""+avtr, "drawable", getActivity().getPackageName());
+                    avatarButton.setBackgroundResource(resID);
+
+
                     if(task!=null) {
                         //intent.putExtra passes task to the intent
-                        intent.putExtra("Task", task);
+                        intent.putExtra("passedTaskName", task.getTaskName());
+                        Toast.makeText(getActivity(), "OpenedTaskActivity Task name should be: "+taskName, Toast.LENGTH_LONG).show();
+
                         startActivity(intent);
+
                     }
                 }
                 else{
-                    Toast.makeText(getActivity(), "Please enter a new task name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please enter a new task name", Toast.LENGTH_LONG).show();
                 }
             }
         });//end of the onclick listener
 
 
-        //getting reference to the custom chore layout
-        View customView = inflater.inflate(R.layout.custom_chore_layout, container, false);
+
 
         return view;
     }

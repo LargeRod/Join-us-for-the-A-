@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity
         String taskName = ((TextView) view.findViewById(R.id.choreNameTextView)).getText().toString();
 
         Intent intent = new Intent(MainActivity.this, OpenedTaskActivity.class);
-        intent.putExtra("Task Name", taskName);
+        intent.putExtra("passedTaskName", taskName);
         startActivity(intent);
     }
 

@@ -1,13 +1,15 @@
 package joinusforthea.choreproject.choremanager11;
 
-import java.io.Serializable;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by admin on 28/11/2017.
  */
 
-public class Task implements Serializable {
-
+public class Task  {
+    private static DatabaseReference databasePeople  =  FirebaseDatabase.getInstance().getReference("users");
+    private static User unassigned = new User("Unassigned","hollow_add",databasePeople.push().getKey());
 
     private Item[] requiredEquipment;
     private String notes;
@@ -36,6 +38,7 @@ public class Task implements Serializable {
         id = idNumber;
         taskName = name;
         notes = "";
+        setAssignedTo(unassigned);
     }
 
     public Task(){
