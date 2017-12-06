@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,14 +46,14 @@ public class TaskAddActivity extends AppCompatActivity{
             }
         });//end of the onclick listener
 
-        ImageView profileButton = (ImageView) findViewById(R.id.profileIcon);
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TaskAddActivity.this, ChooseUserActivity.class);
-                startActivity(intent);
-            }
-        });
+//        ImageView profileButton = (ImageView) findViewById(R.id.profileIcon);
+//        profileButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(TaskAddActivity.this, ChooseUserActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void updateTask(String id) {
@@ -86,8 +85,9 @@ public class TaskAddActivity extends AppCompatActivity{
     }
 
     public void choosePersonActivity(View view){
+        Toast.makeText(TaskAddActivity.this, "is task.getTaskName() null???  "+(task.getTaskName()==null), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(TaskAddActivity.this, ChooseUserActivity.class);
-        intent.putExtra("Task Name", task.getTaskName());
+        intent.putExtra("task name", task.getTaskName());
         startActivity(intent);
         Toast.makeText(this, "clicked user button", Toast.LENGTH_SHORT).show();
     }

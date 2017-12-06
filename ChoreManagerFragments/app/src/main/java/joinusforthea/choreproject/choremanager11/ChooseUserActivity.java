@@ -33,7 +33,7 @@ public class ChooseUserActivity extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
 
-        taskName = getIntent().getStringExtra("Task Name");
+        taskName = getIntent().getStringExtra("task name");
         super.onCreate(savedInstanceState);
         databasePeople = FirebaseDatabase.getInstance().getReference("users");
         setContentView(R.layout.activity_choose_user);
@@ -47,6 +47,7 @@ public class ChooseUserActivity extends AppCompatActivity{
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Task task = snapshot.getValue(Task.class);
                     if(task.getTaskName().equals(taskName)){
+                        Toast.makeText(ChooseUserActivity.this, "task is being set", Toast.LENGTH_SHORT).show();
                         currentTask = task;
                     }
                 }

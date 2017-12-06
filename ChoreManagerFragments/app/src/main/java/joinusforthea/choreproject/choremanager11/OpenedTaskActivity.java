@@ -33,7 +33,6 @@ public class OpenedTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         taskName = getIntent().getStringExtra("Task Name");
 
-
         //getting current task
         FirebaseDatabase.getInstance().getReference().child("tasks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
