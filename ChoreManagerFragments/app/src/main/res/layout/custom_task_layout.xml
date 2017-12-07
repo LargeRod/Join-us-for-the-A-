@@ -4,7 +4,8 @@
     android:id="@+id/choreItemLayout"
     android:layout_width="match_parent"
     android:layout_height="75dp"
-    android:padding="10dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
     android:tag="choreItemLayout">
 
     <ImageButton
@@ -29,7 +30,7 @@
         android:longClickable="true"
         android:onClick="openTask"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
+        android:paddingLeft="16dp"
         android:tag="choreTextLayout">
 
         <TextView
@@ -39,7 +40,8 @@
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:text="Chore Title Goes Here"
-            android:textAppearance="@android:style/TextAppearance" />
+            android:textAppearance="@android:style/TextAppearance"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/choreFootnoteTextView"
@@ -47,6 +49,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
             android:text="Chore Footnote Goes Here" />
     </LinearLayout>
 

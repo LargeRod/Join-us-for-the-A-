@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="joinusforthea.choreproject.choremanager11.shoppingList">
+    tools:context="joinusforthea.choreproject.choremanager11.ShoppingCustomAdapter">
 
 </android.support.constraint.ConstraintLayout>

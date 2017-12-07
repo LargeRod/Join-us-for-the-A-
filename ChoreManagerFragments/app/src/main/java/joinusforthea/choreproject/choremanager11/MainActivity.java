@@ -16,8 +16,6 @@ import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-//TODO @EMILIE BECAUSE WHO ELSE WILL: while adding task, change user icon. fix add user (2nd user has the same icon as second and next crashes)
-
 
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -178,7 +176,6 @@ public class MainActivity extends AppCompatActivity
 
 
     public void openMessages(View view) {
-        //TODO add comment weeeeeeeeeeeeeeeee
         Intent intent = new Intent(MainActivity.this, MessageActivity.class);
         startActivity(intent);
     }

@@ -3,58 +3,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
     tools:context="joinusforthea.choreproject.choremanager11.TasksFragment">
 
     <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="fill_parent"
-        android:layout_height="60dp">
+        android:layout_height="70dp"
+        android:paddingBottom="10dp">
+
+        <ImageButton
+            android:id="@+id/newTaskButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/solid_add"
+            android:padding="5dp"
+            android:scaleType="fitCenter" />
 
         <LinearLayout
             android:id="@+id/newTaskLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="168dp"
+            android:layout_height="70dp"
             android:clickable="true"
             android:focusable="true">
 
-            <ImageButton
-                android:id="@+id/newTaskButton"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/CLEAR"
-                android:scaleType="fitStart"
-                app:srcCompat="@drawable/solid_add" />
-
             <EditText
                 android:id="@+id/newTaskName"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:background="@android:color/transparent"
-                android:ems="10"
-                android:gravity="left|center"
-                android:hint="@string/hint_newTitle"
-                android:inputType="textPersonName"
-                android:padding="0dp"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textSize="15sp" />
-
+                android:gravity="center_vertical"
+                android:hint="New task name"
+                android:paddingLeft="16dp"
+                android:textSize="18sp" />
         </LinearLayout>
 
+        <View style="@style/verticalDivider" />
+
         <Switch
-            android:id="@+id/onlyMyTasksSwitch"
-            android:layout_width="wrap_content"
+            android:id="@+id/onlyMyTasks"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="right"
             android:foregroundGravity="right"
-            android:gravity="right|center_vertical"
+            android:gravity="center_horizontal|center"
+            android:paddingLeft="27dp"
+            android:paddingRight="10dp"
             android:text="@string/only_my_tasks"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
             android:textSize="16sp" />
 
     </LinearLayout>
+
+    <!-- dividor from :https://stackoverflow.com/questions/5049852/android-drawing-separator-divider-line-in-layout-->
+
+    <View style="@style/horisontalDivider" />
 
     <ListView
         android:id="@+id/taskList"

@@ -28,14 +28,14 @@ import java.util.List;
 
 public class BroomClosetActivity extends AppCompatActivity {
     private ImageButton buttonAddTools;
-    List<BroomClosetItems> materials;
+    List<BroomClosetItems> broomClosetItems;
     DatabaseReference databaseTasks;
     ListView listView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        databaseTasks = FirebaseDatabase.getInstance().getReference("material");
-        materials = new ArrayList<>();
+        databaseTasks = FirebaseDatabase.getInstance().getReference("broomClosesItems");
+        broomClosetItems = new ArrayList<>();
         listView = (ListView) findViewById(R.id.listOfTools);
         setContentView(R.layout.activity_broom_closet);
 
@@ -56,14 +56,14 @@ public class BroomClosetActivity extends AppCompatActivity {
         databaseTasks.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                materials.clear();
+                broomClosetItems.clear();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    BroomClosetItems task = postSnapshot.getValue(BroomClosetItems.class);
-                    materials.add(task);
+                    BroomClosetItems item = postSnapshot.getValue(BroomClosetItems.class);
+                    broomClosetItems.add(item);
                 }
                 listView = (ListView) findViewById(R.id.listOfTools);
-                BroomClosetCustomAdapter adapter = new BroomClosetCustomAdapter(BroomClosetActivity.this, materials );
+                BroomClosetCustomAdapter adapter = new BroomClosetCustomAdapter(BroomClosetActivity.this, broomClosetItems );
                 listView.setAdapter(adapter);
 
             }
@@ -77,7 +77,7 @@ public class BroomClosetActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                BroomClosetItems material = materials.get(i);
+                BroomClosetItems material = broomClosetItems.get(i);
                 String id = databaseTasks.child("material").push().getKey();
 
                 showUpdateDeleteDialog(id, material.getItemName());

@@ -1,5 +1,4 @@
-//TODO: @Emilie make the add task screen add a real task
-//TODO: @Emilie add firebase to all the other garbages if possible (y)
+
 
 
 package joinusforthea.choreproject.choremanager11;

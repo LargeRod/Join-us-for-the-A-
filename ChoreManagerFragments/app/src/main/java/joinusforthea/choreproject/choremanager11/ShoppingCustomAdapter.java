@@ -3,7 +3,7 @@ package joinusforthea.choreproject.choremanager11;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class shoppingList extends AppCompatActivity {
+public class ShoppingCustomAdapter extends AppCompatActivity {
 
 
     @Override
