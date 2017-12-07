@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -36,7 +37,7 @@ public class TaskAddActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         taskName = getIntent().getStringExtra("passedTaskName");
-        Toast.makeText(this, "getting: "+taskName  , Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "getting: " + taskName, Toast.LENGTH_LONG).show();
 
         // makes view shift up when keyboard hides layout
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -58,34 +59,42 @@ public class TaskAddActivity extends AppCompatActivity{
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             Task task = snapshot.getValue(Task.class);
-                            if(task.getTaskName().equals(taskName)){
+                            if (task.getTaskName().equals(taskName)) {
                                 currentTask = task;
                                 taskId = currentTask.getId();
                                 updateTask(taskId);
                             }
                         }
                     }
+
                     public void onCancelled(DatabaseError databaseError) {
                     }
                 });
 
 
-
-
                 //closes the activity when done is pressed
                 TaskAddActivity.super.onBackPressed();
-            }
-        });//end of the onclick listener
 
-//        ImageView profileButton = (ImageView) findViewById(R.id.profileIcon);
-//        profileButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(TaskAddActivity.this, ChooseUserActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-    }
+                final EditText durationText = (EditText) findViewById(R.id.durationText);
+                durationText.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                            switch(keyCode) {
+                                case KeyEvent.KEYCODE_ENTER:
+                                    durationText.setText(durationText.getText().append("h"));
+                                    return true;
+                                default:
+                                    break;
+                            }
+                        }
+                        return false;
+                    }
+                });
+            }
+        });
+    } //end of the onclick listener
+
 
     private void updateTask(String id) {
         //getting the specified task reference
@@ -110,9 +119,15 @@ public class TaskAddActivity extends AppCompatActivity{
 
         dateFragment = new DatePickerFragment();
         dateFragment.show(getFragmentManager(), "datePicker");
-        Toast.makeText(this, "Date from TaskAddActivity: " + dateFragment.toString(), Toast.LENGTH_LONG).show();
         //to string returns the date in proper format
         dueDate = dateFragment.toString();
+
+        TextView dateTextInView = (TextView) findViewById(R.id.dateText);
+        dateTextInView.setText(dueDate);
+    }
+
+    public void formatDueText(View v) {
+
     }
 
     public void choosePersonActivity(View view){
@@ -120,6 +135,11 @@ public class TaskAddActivity extends AppCompatActivity{
         Toast.makeText(this, "passing: "+taskName  , Toast.LENGTH_LONG).show();
         intent.putExtra("passedTaskName", taskName);
 
+        startActivity(intent);
+    }
+
+    public void openPeople(View v) {
+        Intent intent = new Intent(TaskAddActivity.this, ProfilePageActivity.class);
         startActivity(intent);
     }
 

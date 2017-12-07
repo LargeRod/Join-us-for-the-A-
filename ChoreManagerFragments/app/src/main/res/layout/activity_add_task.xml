@@ -101,7 +101,7 @@
                         android:background="@android:color/transparent"
                         android:ems="10"
                         android:hint="Time"
-                        android:inputType="time" />
+                        android:inputType="numberDecimal" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -134,7 +134,7 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:onClick="showDatePickerDialog"
-                        android:text="NotSetYet"
+                        android:text="Date"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -160,6 +160,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="openPeople"
                 android:text="Kim"
                 android:textSize="16sp" />
 
@@ -175,6 +176,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_gravity="left|center_vertical"
+                    android:onClick="openPeople"
                     app:srcCompat="@drawable/creator" />
 
                 <TextView
