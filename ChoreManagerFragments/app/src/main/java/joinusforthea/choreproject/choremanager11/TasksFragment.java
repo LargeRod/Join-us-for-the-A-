@@ -137,7 +137,7 @@ public class TasksFragment extends Fragment{
                 }
 
                 //creating adapter
-                TaskCustomAdapter taskAdapter = new TaskCustomAdapter(getActivity(), tasks);
+                TasksCustomAdapter taskAdapter = new TasksCustomAdapter(getActivity(), tasks);
                 //attaching adapter to the listview
                 listViewTask.setAdapter(taskAdapter);
             }
@@ -147,13 +147,6 @@ public class TasksFragment extends Fragment{
 
             }
         });//end of addValueEventListener
-
-
-
-
-
-
-
     }//end of onStart
 
 

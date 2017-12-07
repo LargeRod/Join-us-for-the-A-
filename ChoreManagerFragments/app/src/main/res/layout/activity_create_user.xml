@@ -11,7 +11,9 @@
         android:layout_height="70dp"
         android:hint="Enter your name"
         android:padding="20dp"
-        android:text="" />
+        android:text=""
+        android:singleLine="true"
+        android:imeOptions="actionDone"/>
 
     <TextView
         android:id="@+id/selectAvatarTextView"

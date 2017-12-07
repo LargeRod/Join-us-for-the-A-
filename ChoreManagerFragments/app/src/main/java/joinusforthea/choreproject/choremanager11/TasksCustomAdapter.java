@@ -13,12 +13,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class TaskCustomAdapter extends ArrayAdapter<Task> {
+public class TasksCustomAdapter extends ArrayAdapter<Task> {
     private Activity context;
     List<Task> tasks;
     ImageButton avatarButton;
 
-    public TaskCustomAdapter(Activity context, List<Task> tasks) {
+    public TasksCustomAdapter(Activity context, List<Task> tasks) {
         super(context, R.layout.custom_task_layout, tasks);
         this.context = context;
         this.tasks = tasks;

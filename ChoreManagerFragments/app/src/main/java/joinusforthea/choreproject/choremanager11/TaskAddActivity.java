@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,6 +37,10 @@ public class TaskAddActivity extends AppCompatActivity{
         setContentView(R.layout.activity_add_task);
         taskName = getIntent().getStringExtra("passedTaskName");
         Toast.makeText(this, "getting: "+taskName  , Toast.LENGTH_LONG).show();
+
+        // makes view shift up when keyboard hides layout
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
 
 
         doneButton = (Button) findViewById(R.id.doneButton);

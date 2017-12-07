@@ -17,8 +17,8 @@
         android:layout_height="70dp"
         android:paddingBottom="10dp">
 
-        <ImageButton
-            android:id="@+id/newTaskButton"
+        <ImageView
+            android:id="@+id/avatarImageView"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/solid_add"
@@ -27,38 +27,52 @@
 
         <LinearLayout
             android:id="@+id/newTaskLayout"
-            android:layout_width="168dp"
+            android:layout_width="140dp"
             android:layout_height="70dp"
             android:clickable="true"
             android:focusable="true"
-            android:gravity="center"
             android:paddingBottom="10dp">
 
-            <EditText
-                android:id="@+id/newTaskName"
+            <TextView
+                android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:gravity="center_vertical"
-                android:hint="New task name"
+                android:hint="username"
                 android:paddingLeft="16dp"
                 android:textSize="18sp" />
+
         </LinearLayout>
 
         <View style="@style/verticalDivider" />
 
-        <Switch
-            android:id="@+id/onlyMyTasks"
+        <LinearLayout
+            android:id="@+id/messageLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:foregroundGravity="right"
-            android:gravity="center_horizontal|center"
-            android:paddingLeft="27dp"
-            android:paddingRight="10dp"
-            android:text="@string/only_my_tasks"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/messageTextView"
+                android:layout_width="104dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="SEND MESSAGE"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/messageButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/message"
+                android:scaleType="fitCenter" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -66,8 +80,24 @@
 
     <View style="@style/horisontalDivider" />
 
+    <TextView
+        android:id="@+id/currentTaskTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="Current Tasks"
+        android:textColor="@color/colorPrimary"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <View
+        style="@style/horisontalDivider"
+        id="@+id/view"
+        layout_width="match_parent"
+        android:layout_width="wrap_content" />
+
     <ListView
-        android:id="@+id/taskList"
+        android:id="@+id/usersTaskList"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_gravity="bottom"

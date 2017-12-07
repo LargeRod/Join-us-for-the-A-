@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -167,6 +169,8 @@ public class MainActivity extends AppCompatActivity
     public void openProfile(View view){
         //called from an avatar being clicked
         Intent intent = new Intent(MainActivity.this, ProfilePageActivity.class);
+        //getting the task name with .toString
+        intent.putExtra("passedTaskName",((TextView)((ViewGroup)view.getParent()).findViewById(R.id.choreNameTextView)).getText().toString());
         startActivity(intent);
     }
 
