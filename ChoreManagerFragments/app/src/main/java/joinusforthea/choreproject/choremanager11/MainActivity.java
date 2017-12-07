@@ -13,11 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-
+//TODO @EMILIE BECAUSE WHO ELSE WILL: while adding task, change user icon. fix add user (2nd user has the same icon as second and next crashes)
 
 
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +27,9 @@ public class MainActivity extends AppCompatActivity
     Toolbar toolbar = null;
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
+    private ShoppingFragment shoppingFragment;
+    private TasksFragment tasksFragment;
+    private PeopleFragment peopleFragment;
 
 
 
@@ -79,10 +81,13 @@ public class MainActivity extends AppCompatActivity
     //EV: taken from Mitch Tabian
     public void setupViewPager(ViewPager viewPager){
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
+        shoppingFragment = new ShoppingFragment();
+        tasksFragment = new TasksFragment();
+        peopleFragment = new PeopleFragment();
 
-        adapter.addFragment(new ShoppingFragment(), "Shopping");
-        adapter.addFragment(new TasksFragment(), "Tasks");
-        adapter.addFragment(new PeopleFragment(), "People");
+        adapter.addFragment(shoppingFragment, "Shopping");
+        adapter.addFragment(tasksFragment, "Tasks");
+        adapter.addFragment(peopleFragment, "People");
 
         viewPager.setAdapter(adapter);
 
@@ -167,16 +172,10 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void openTask(View view){
-        //called from a task being clicked
-
-        //casting the findViewById to a text view, then getting text and converting to string
-        String taskName = ((TextView) view.findViewById(R.id.choreNameTextView)).getText().toString();
-
-        Intent intent = new Intent(MainActivity.this, OpenedTaskActivity.class);
-        intent.putExtra("Task Name", taskName);
-        startActivity(intent);
+    public void openTask(View view) {
+        tasksFragment.openTaskInfo(view);
     }
+
 
     public void openMessages(View view) {
         //TODO add comment weeeeeeeeeeeeeeeee

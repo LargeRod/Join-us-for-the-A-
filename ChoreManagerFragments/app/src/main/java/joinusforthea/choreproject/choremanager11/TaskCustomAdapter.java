@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -15,9 +16,10 @@ import java.util.List;
 public class TaskCustomAdapter extends ArrayAdapter<Task> {
     private Activity context;
     List<Task> tasks;
+    ImageButton avatarButton;
 
     public TaskCustomAdapter(Activity context, List<Task> tasks) {
-        super(context, R.layout.custom_chore_layout, tasks);
+        super(context, R.layout.custom_task_layout, tasks);
         this.context = context;
         this.tasks = tasks;
     }
@@ -26,13 +28,19 @@ public class TaskCustomAdapter extends ArrayAdapter<Task> {
     public View getView(int position, View convertView, ViewGroup parent) {
         //accessing the view
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.custom_chore_layout, null, true);
+        View listViewItem = inflater.inflate(R.layout.custom_task_layout, null, true);
 
         TextView choreName = (TextView) listViewItem.findViewById(R.id.choreNameTextView);
 
         //setting the chore name
         Task task = tasks.get(position);
         choreName.setText(task.getTaskName());
+
+        avatarButton = (ImageButton) listViewItem.findViewById(R.id.avatarImageButton);
+        String avtr = task.getAssignedTo().getAvatar();
+        int resID = getContext().getResources().getIdentifier(""+avtr, "drawable", getContext().getPackageName());
+        avatarButton.setBackgroundResource(resID);
+
         return listViewItem;
     }
 }

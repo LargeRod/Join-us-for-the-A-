@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class BroomClosetCustomAdapter extends ArrayAdapter<BroomClosetItems> {
     List<BroomClosetItems> items;
 
     public BroomClosetCustomAdapter(Context context, List<BroomClosetItems> items) {
-        super(context, R.layout.custom_chore_layout, items);
+        super(context, R.layout.custom_task_layout, items);
         this.context = context;
         this.items = items;
     }

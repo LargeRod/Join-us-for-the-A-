@@ -109,6 +109,7 @@ public class CreateUserActivity extends AppCompatActivity{
             case R.id.a3:
                 v.setPadding(0,0,0,0);
                 setSelectedAvatar((ImageButton)v);
+                Toast.makeText(this, "selected a3", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.a4:
                 v.setPadding(0,0,0,0);
@@ -167,7 +168,8 @@ public class CreateUserActivity extends AppCompatActivity{
             User u = new User(name, avatar, id);
             //Saving the User
             databasePeople.child(id).setValue(u);
-            Toast.makeText(this, "added user called " + u.getName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "added user called " + u.getName() +" with avatar avatar", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 }

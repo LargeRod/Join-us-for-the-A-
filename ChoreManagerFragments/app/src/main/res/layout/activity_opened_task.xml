@@ -26,8 +26,8 @@
                 android:id="@+id/profileIcon"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-                android:clickable="true"
-                app:srcCompat="@drawable/boy" />
+                android:background="@drawable/boy"
+                android:clickable="true" />
 
             <LinearLayout
                 android:id="@+id/nameAndAssignment"
@@ -59,10 +59,11 @@
             android:layout_height="65dp" />
 
         <LinearLayout
-            android:id="@+id/remove_and_release"
+            android:id="@+id/releaseLayout"
             android:layout_width="155dp"
             android:layout_height="65dp"
             android:clickable="true"
+            android:onClick="releaseTask"
             android:orientation="horizontal">
 
             <TextView
@@ -194,7 +195,7 @@
                 android:paddingTop="20dp">
 
                 <ImageView
-                    android:id="@+id/icon"
+                    android:id="@+id/creatorIcon"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_gravity="left|center_vertical"
