@@ -82,6 +82,10 @@
             android:name=".ChooseUserActivity"
             android:label="Choose User">
         </activity>
+        <activity
+            android:name=".SwitchUserActivity"
+            android:label="Cupboard and Fridge">
+        </activity>
 
     </application>
 

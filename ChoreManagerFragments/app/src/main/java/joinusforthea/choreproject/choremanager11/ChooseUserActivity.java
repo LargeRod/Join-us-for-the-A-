@@ -34,7 +34,6 @@ public class ChooseUserActivity extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
         taskName = getIntent().getStringExtra("passedTaskName");
-        Toast.makeText(this, "passedTaskName to ChooseUserActivity: "+taskName  , Toast.LENGTH_LONG).show();
         super.onCreate(savedInstanceState);
         databasePeople = FirebaseDatabase.getInstance().getReference("users");
         setContentView(R.layout.activity_choose_user);
@@ -87,7 +86,6 @@ public class ChooseUserActivity extends AppCompatActivity{
                     Task task = snapshot.getValue(Task.class);
                     if(task.getTaskName().equals(taskName)){
                         setCurrentTask(task);
-                        Toast.makeText(ChooseUserActivity.this, "currentTask set to "+ currentTask.getTaskName(), Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -118,7 +116,6 @@ public class ChooseUserActivity extends AppCompatActivity{
                         //EV: firebase doesnt like array lists... :( so ill comment out for now
                         //selectedUser.addTask(currentTask);
                         currentTask.setAssignedTo(selectedUser);
-
                         updateUser(selectedUser, selectedUser.getId());
                         updateTask(currentTask,currentTask.getId());
                      }
@@ -128,17 +125,25 @@ public class ChooseUserActivity extends AppCompatActivity{
                 Toast.makeText(ChooseUserActivity.this, "error!!!!!!!!!!!!!!!!!!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    private void updateUser(User u, String id) {
+        //getting the specified task reference
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("users").child(id);
+        //updating user
+        dR.setValue(u);
 
+    }
 
-
-//        selectedUser.addTask(currentTask);
-//        currentTask.setAssignedTo(selectedUser);
-//        Toast.makeText(this, "Updated objects", Toast.LENGTH_SHORT).show();
-//        updateFirebase is the old method
-//        updateFirebase(selectedUser, selectedUser.getId(), "users");
-//        updateFirebase(currentTask, currentTask.getId(), "tasks");
-
+    private void updateTask(Task t, String id) {
+        //getting the specified task reference
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("tasks").child(id);
+        //updating task
+        dR.setValue(t);
+    }
+    //probably wont help
+    public void setCurrentTask(Task task){
+        currentTask = task;
     }
 
     public void selectedUser(View view){
@@ -149,27 +154,6 @@ public class ChooseUserActivity extends AppCompatActivity{
         updateTaskAndUser();
         //close window when user is selected
         finish();
-    }
-
-    private void updateUser(User u, String id) {
-        //getting the specified task reference
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("users").child(id);
-        //updating user
-        dR.setValue(u);
-
-    }
-    private void updateTask(Task t, String id) {
-        //getting the specified task reference
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("tasks").child(id);
-        //updating task
-        dR.setValue(t);
-        Toast.makeText(getApplicationContext(), "Updated Firebase task "+t.getAssignedTo(), Toast.LENGTH_SHORT).show();
-    }
-
-    //probably wont help
-    public void setCurrentTask(Task task){
-        currentTask = task;
-        Toast.makeText(this, "task set to "+(currentTask.getTaskName()), Toast.LENGTH_LONG).show();
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -60,6 +61,7 @@ public class ProfilePageActivity extends AppCompatActivity {
                 tasks.clear();
 
                 //iterating through all the nodes
+                //setting the current user from the task name
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //getting task
                     Task task = postSnapshot.getValue(Task.class);
@@ -70,10 +72,10 @@ public class ProfilePageActivity extends AppCompatActivity {
                     }
                 }
 
+                //adding task to the list iff it's assigned to the current user
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //getting task
                     Task task = postSnapshot.getValue(Task.class);
-                    //adding task to the list iff it's assigned to the current user
                     if(task.getAssignedTo().getName().equals(currentUser.getName())){
                         tasks.add(task);
                     }
@@ -83,7 +85,11 @@ public class ProfilePageActivity extends AppCompatActivity {
                 TasksCustomAdapter taskAdapter = new TasksCustomAdapter(ProfilePageActivity.this, tasks);
                 //attaching adapter to the listview
                 listViewTask.setAdapter(taskAdapter);
+
+                //update the rest of the view
+                updateView();
             }
+
 
 
             @Override
@@ -94,5 +100,17 @@ public class ProfilePageActivity extends AppCompatActivity {
 
 
     }//end of onStart
+
+
+    //this method sets the various user specific fields to the proper
+    //values in the profile page xml file activity_profile
+    public void updateView(){
+
+        ImageView avatarImageView = (ImageView) findViewById(R.id.avatarImageView);
+        String avtr = currentUser.getAvatar();
+        int resID = this.getResources().getIdentifier(""+avtr, "drawable", this.getPackageName());
+        avatarImageView.setBackgroundResource(resID);
+
+    }
 
 }

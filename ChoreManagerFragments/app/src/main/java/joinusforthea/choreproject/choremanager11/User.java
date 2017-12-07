@@ -1,5 +1,7 @@
 package joinusforthea.choreproject.choremanager11;
 
+import android.content.Context;
+
 /**
  * Created by admin on 28/11/2017.
  */
@@ -15,17 +17,15 @@ class User {
 //    private List<Task> currentTasks = new ArrayList<>();
 //    private List<Task> completedTasks = new ArrayList<>();
     private String id;
+    private Context context;
 
     public User(String name, String avatar, String id) {
         this.name = name;
         this.avatar = avatar;
         this.id = id;
+
     }
 
-
-    public void unassignTask(){
-        //remove task from current tasks and "assign" it to user called unassigned
-    }
 
     public void createTask(String name){
         //creates a new task and sets the creator as this user
@@ -39,6 +39,7 @@ class User {
     }
 
     public String getAvatar() {
+
         return avatar;
     }
 

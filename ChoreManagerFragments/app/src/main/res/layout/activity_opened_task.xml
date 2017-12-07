@@ -29,29 +29,17 @@
                 android:background="@drawable/boy"
                 android:clickable="true" />
 
-            <LinearLayout
-                android:id="@+id/nameAndAssignment"
+            <TextView
+                android:id="@+id/firstName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:clickable="true"
-                android:orientation="vertical">
+                android:gravity="center_vertical|center_horizontal"
+                android:text="John Smith" />
 
-                <TextView
-                    android:id="@+id/firstName"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="John Smith" />
-
-                <TextView
-                    android:id="@+id/assignment"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:gravity="center_horizontal"
-                    android:text="assigned" />
-            </LinearLayout>
         </LinearLayout>
+
 
         <Space
             android:id="@+id/space1"
@@ -87,6 +75,8 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <View style="@style/horisontalDivider" />
 
     <LinearLayout
         android:id="@+id/timeAndCreator"
@@ -214,6 +204,8 @@
 
     </LinearLayout>
 
+    <View style="@style/horisontalDivider"/>
+
     <TextView
         android:id="@+id/required_equipment"
         android:layout_width="match_parent"
@@ -272,6 +264,10 @@
         </LinearLayout>
 
     </GridLayout>
+
+    <View
+        style="@style/horisontalDivider"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/notes"

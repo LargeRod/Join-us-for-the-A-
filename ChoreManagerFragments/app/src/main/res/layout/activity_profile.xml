@@ -90,11 +90,7 @@
         android:textSize="19sp"
         android:textStyle="bold" />
 
-    <View
-        style="@style/horisontalDivider"
-        id="@+id/view"
-        layout_width="match_parent"
-        android:layout_width="wrap_content" />
+    <View style="@style/horisontalDivider"/>
 
     <ListView
         android:id="@+id/usersTaskList"

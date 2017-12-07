@@ -78,7 +78,7 @@ public class BroomClosetActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 BroomClosetItems material = broomClosetItems.get(i);
-                String id = databaseTasks.child("material").push().getKey();
+                String id = databaseTasks.child("broomClosesItems").push().getKey();
 
                 showUpdateDeleteDialog(id, material.getItemName());
                 return true;
@@ -107,7 +107,7 @@ public class BroomClosetActivity extends AppCompatActivity {
     }
 
     public void updateMaterial(String id, String name) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("material").child(id);
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("broomClosesItems").child(id);
         BroomClosetItems items = new BroomClosetItems(id, name);
         dR.setValue(items);
 
@@ -115,7 +115,7 @@ public class BroomClosetActivity extends AppCompatActivity {
     }
 
     public void deleteMaterial(String id) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("material").child(id);
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("broomClosesItems").child(id);
         dR.removeValue();
 
         Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG).show();

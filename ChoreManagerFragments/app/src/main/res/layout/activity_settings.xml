@@ -5,11 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context="joinusforthea.choreproject.choremanager11.SettingsActivity">
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -20,7 +17,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp" />
-
+    <View style="@style/horisontalDivider" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -64,6 +61,7 @@
             android:id="@+id/switchUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="openSwitchUserActivity"
             android:text="Switch User" />
 
         <Button
@@ -80,4 +78,5 @@
             android:text="Remove A User" />
 
     </LinearLayout>
+
 </LinearLayout>

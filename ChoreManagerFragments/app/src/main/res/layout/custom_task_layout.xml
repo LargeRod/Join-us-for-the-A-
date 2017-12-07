@@ -16,8 +16,14 @@
         android:background="@drawable/hollow_add"
         android:clickable="true"
         android:onClick="openProfile"
-        android:padding="5dp"
         android:scaleType="fitCenter" />
+
+    <View
+        style="@style/verticalDivider"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <LinearLayout
         android:id="@+id/choreTextLayout"
@@ -30,7 +36,6 @@
         android:longClickable="true"
         android:onClick="openTask"
         android:orientation="vertical"
-        android:paddingLeft="16dp"
         android:tag="choreTextLayout">
 
         <TextView

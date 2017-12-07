@@ -90,7 +90,7 @@ public class TasksFragment extends Fragment{
 
                     //set the avatar in the task list view
                     avatarButton = (ImageButton) customView.findViewById(R.id.avatarImageButton);
-                    String avtr = task.getAssignedTo().getAvatar();
+                    String avtr = task.getUserAvatar();
                     int resID = getResources().getIdentifier(""+avtr, "drawable", getActivity().getPackageName());
                     avatarButton.setBackgroundResource(resID);
 
@@ -170,8 +170,6 @@ public class TasksFragment extends Fragment{
             //setting edittext to blank again
             newTaskName.setText("");
 
-            //displaying a success toast
-            Toast.makeText(getActivity(), "Task created", Toast.LENGTH_SHORT).show();
             return task;
         } else {
             //if the value is not given displaying a toast

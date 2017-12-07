@@ -129,4 +129,12 @@ public class Task  {
     public String getId() {
         return id;
     }
+
+    public void unassignTask(){
+        setAssignedTo(unassigned);
+    }
+
+    public String getUserAvatar(){
+        return getAssignedTo().getAvatar();
+    }
 }

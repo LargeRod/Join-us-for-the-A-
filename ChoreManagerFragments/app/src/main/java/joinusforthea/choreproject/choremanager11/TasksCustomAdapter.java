@@ -37,7 +37,7 @@ public class TasksCustomAdapter extends ArrayAdapter<Task> {
         choreName.setText(task.getTaskName());
 
         avatarButton = (ImageButton) listViewItem.findViewById(R.id.avatarImageButton);
-        String avtr = task.getAssignedTo().getAvatar();
+        String avtr = task.getUserAvatar();
         int resID = getContext().getResources().getIdentifier(""+avtr, "drawable", getContext().getPackageName());
         avatarButton.setBackgroundResource(resID);
 

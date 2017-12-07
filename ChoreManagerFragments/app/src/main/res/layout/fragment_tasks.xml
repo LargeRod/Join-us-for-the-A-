@@ -42,7 +42,9 @@
                 android:gravity="center_vertical"
                 android:hint="New task name"
                 android:paddingLeft="16dp"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:singleLine="true"
+                android:imeOptions="actionDone" />
         </LinearLayout>
 
         <View style="@style/verticalDivider" />

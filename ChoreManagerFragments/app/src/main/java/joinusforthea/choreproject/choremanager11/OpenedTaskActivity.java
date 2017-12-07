@@ -82,6 +82,17 @@ public class OpenedTaskActivity extends AppCompatActivity {
     }
 
     public void releaseTask(View view){
+        currentTask.unassignTask();
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("tasks").child(currentTask.getId());
+        currentTask.setDueDate(dueDate);
+        dR.setValue(currentTask);
+
+        //refreshing avatar
+        String avtr = currentTask.getUserAvatar();
+        int resID = this.getResources().getIdentifier(""+avtr, "drawable", this.getPackageName());
+        profileIcon.setBackgroundResource(resID);
+
+        //refreshing text views
 
     }
 

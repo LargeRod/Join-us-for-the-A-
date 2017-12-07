@@ -24,13 +24,19 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
+    public void openSwitchUserActivity(View v) {
+        Intent intent = new Intent(SettingsActivity.this, SwitchUserActivity.class);
+        startActivity(intent);
+    }
+
     public void addNewUser(View v) {
         Intent intent = new Intent(SettingsActivity.this, CreateUserActivity.class);
         startActivity(intent);
     }
 
-//    public void deleteUser(View v) {
-//        //IMPLEMENT DELETING A USER IN HERE
-//        //SHOULD CAUSE ALL THEIR TASKS TO BECOME "UNASSIGNED"
-//    }
+    public void deleteUser(View v) {
+        //TODO @EMILIE DO THIS
+        //IMPLEMENT DELETING A USER IN HERE
+        //SHOULD CAUSE ALL THEIR TASKS TO BECOME "UNASSIGNED"
+    }
 }
