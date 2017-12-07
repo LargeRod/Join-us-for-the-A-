@@ -5,13 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,75 +30,82 @@ public class TaskAddActivity extends AppCompatActivity{
     DialogFragment dateFragment;
     String dueDate;
     static Task currentTask;
+    TextView firstName;
+    TextView creatorName;
+    ImageView profileAvatar;
+    ImageView creatorAvatar;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         taskName = getIntent().getStringExtra("passedTaskName");
-        Toast.makeText(this, "getting: " + taskName, Toast.LENGTH_LONG).show();
 
         // makes view shift up when keyboard hides layout
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        doneButton = (Button) findViewById(R.id.doneButton);
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
     public void onStart() {
         super.onStart();
 
-
-        doneButton = (Button) findViewById(R.id.doneButton);
-        doneButton.setOnClickListener(new View.OnClickListener() {
+//getting current task
+        FirebaseDatabase.getInstance().getReference().child("tasks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                //this will take everything on the activity_add_task and save it
-                //in the task we're creating
-                setTitle(taskName);
-
-                //getting current task
-                FirebaseDatabase.getInstance().getReference().child("tasks").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    //ondatachange sets the current task
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            Task task = snapshot.getValue(Task.class);
-                            if (task.getTaskName().equals(taskName)) {
-                                currentTask = task;
-                                taskId = currentTask.getId();
-                                updateTask(taskId);
-                            }
-                        }
+            //ondatachange sets the current task
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Task task = snapshot.getValue(Task.class);
+                    if (task.getTaskName().equals(taskName)) {
+                        currentTask = task;
+                        taskId = currentTask.getId();
+                        updateTask(taskId);
+                        setLayoutViews();
                     }
-
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
-
-
-                //closes the activity when done is pressed
-                TaskAddActivity.super.onBackPressed();
-
-                final EditText durationText = (EditText) findViewById(R.id.durationText);
-                durationText.setOnKeyListener(new View.OnKeyListener() {
-                    @Override
-                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                            switch(keyCode) {
-                                case KeyEvent.KEYCODE_ENTER:
-                                    durationText.setText(durationText.getText().append("h"));
-                                    return true;
-                                default:
-                                    break;
-                            }
-                        }
-                        return false;
-                    }
-                });
+                }
             }
-        }); //end of the onclick listener
+
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
     }//end of on start
 
+    private void setLayoutViews() {
+        setTitle(currentTask.getTaskName());
+
+
+        //update assigned to fields
+        firstName = (TextView) findViewById(R.id.firstName);
+        firstName.setText(currentTask.getAssignedTo().getName());
+
+        profileAvatar = (ImageView)findViewById(R.id.profileAvatar);
+        String avtr = currentTask.getUserAvatar();
+        int resID = this.getResources().getIdentifier(""+avtr, "drawable", this.getPackageName());
+        profileAvatar.setBackgroundResource(resID);
+
+
+        //set creator fields
+        creatorName = (TextView) findViewById(R.id.creatorName);
+        creatorName.setText(currentTask.getCreator().getName());
+
+        creatorAvatar = (ImageView) findViewById(R.id.creatorAvatar);
+        String creatorAvtr = currentTask.getCreator().getAvatar();
+        int creatorResID = this.getResources().getIdentifier(""+creatorAvtr, "drawable", this.getPackageName());
+        creatorAvatar.setBackgroundResource(creatorResID);
+
+
+
+    }
 
 
     private void updateTask(String id) {
@@ -114,6 +120,10 @@ public class TaskAddActivity extends AppCompatActivity{
         TextView dateTextView = (TextView) findViewById(R.id.dateText);
         dateTextView.setText(dueDate);
         currentTask.setDueDate(dueDate);
+
+        TextView creatorName = (TextView) findViewById(R.id.creatorName);
+        creatorName.setText(currentTask.getCreator().getName());
+
 
         dR.setValue(currentTask);
     }
@@ -138,7 +148,6 @@ public class TaskAddActivity extends AppCompatActivity{
 
     public void choosePersonActivity(View view){
         Intent intent = new Intent(TaskAddActivity.this, ChooseUserActivity.class);
-        Toast.makeText(this, "passing: "+taskName  , Toast.LENGTH_LONG).show();
         intent.putExtra("passedTaskName", taskName);
 
         startActivity(intent);

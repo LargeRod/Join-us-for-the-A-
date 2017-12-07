@@ -13,8 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 //TODO @ EMILIE: The app doesnt crash, but i need to work on setting a task creator
 public class MainActivity extends AppCompatActivity
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity
     private ShoppingFragment shoppingFragment;
     private TasksFragment tasksFragment;
     private PeopleFragment peopleFragment;
+    private ImageView avatarImage;
 
 
 
@@ -166,11 +166,22 @@ public class MainActivity extends AppCompatActivity
 
 
     //EV: these methods are called from xml files when something is clicked
-    public void openProfile(View view){
-        //called from an avatar being clicked
+    public void openProfile(View view) {
+
+        String avatarTag = null;
+
+        if (view.getTag().equals("infoTextView")){
+            //adding on click listener for clicking the task info
+            avatarImage = (ImageView) view.findViewById(R.id.avatarImage);
+            avatarTag = avatarImage.getTag().toString();
+            Toast.makeText(this, "passing: " + avatarTag, Toast.LENGTH_SHORT).show();
+        }
+        else{
+            avatarTag = view.getTag().toString();
+        }
+
         Intent intent = new Intent(MainActivity.this, ProfilePageActivity.class);
-        //getting the task name with .toString
-        intent.putExtra("passedTaskName",((TextView)((ViewGroup)view.getParent()).findViewById(R.id.choreNameTextView)).getText().toString());
+        intent.putExtra("passedUserInfo", avatarTag);
         startActivity(intent);
     }
 

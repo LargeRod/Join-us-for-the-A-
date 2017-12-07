@@ -29,12 +29,17 @@ public class OpenedTaskActivity extends AppCompatActivity {
     ImageView profileIcon;
     DialogFragment dateFragment;
     String dueDate;
+    TextView creatorName;
+    ImageView creatorAvatar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+    }
+
+    public void onStart() {
         //getting current task
         taskName = getIntent().getStringExtra("passedTaskName");
         FirebaseDatabase.getInstance().getReference().child("tasks").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -51,6 +56,7 @@ public class OpenedTaskActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+        super.onStart();
     }
 
 
@@ -76,6 +82,19 @@ public class OpenedTaskActivity extends AppCompatActivity {
         firstName = (TextView) findViewById(R.id.firstName);
         firstName.setText(user.getName());
 
+        creatorName = (TextView) findViewById(R.id.creatorName);
+        creatorName.setText(currentTask.getCreator().getName());
+
+
+        creatorAvatar = (ImageView) findViewById(R.id.creatorAvatar);
+        String creatorAvtr = currentTask.getCreator().getAvatar();
+        int creatorResID = this.getResources().getIdentifier(""+creatorAvtr, "drawable", this.getPackageName());
+        creatorAvatar.setBackgroundResource(creatorResID);
+
+
+
+
+
 
 
 
@@ -93,6 +112,8 @@ public class OpenedTaskActivity extends AppCompatActivity {
         profileIcon.setBackgroundResource(resID);
 
         //refreshing text views
+        firstName = (TextView) findViewById(R.id.firstName);
+        firstName.setText(currentTask.getAssignedTo().getName());
 
     }
 

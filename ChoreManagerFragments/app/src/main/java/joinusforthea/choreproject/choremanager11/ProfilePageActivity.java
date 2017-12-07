@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,10 +17,11 @@ import java.util.List;
 
 public class ProfilePageActivity extends AppCompatActivity {
 
+    DatabaseReference databasePeople;
     DatabaseReference databaseTasks;
     List<Task> tasks;
     ListView listViewTask;
-    String currentTaskName;
+    String userAvatar;
     Task currentTask;
     User currentUser;
 
@@ -32,6 +32,7 @@ public class ProfilePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         tasks = new ArrayList<>();
         User currentUser;
+        databasePeople = FirebaseDatabase.getInstance().getReference("users");
         databaseTasks = FirebaseDatabase.getInstance().getReference("tasks");
         listViewTask = (ListView) findViewById(R.id.usersTaskList);
 
@@ -51,9 +52,12 @@ public class ProfilePageActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-        currentTaskName = getIntent().getStringExtra("passedTaskName");
+
+        //EV: ONSTART USING TASK NAME TO FIND USER, TERRIBLE IDEA
+        //openning from main activity
+        userAvatar = getIntent().getStringExtra("passedUserInfo");
         //attaching value event listener
-        databaseTasks.addValueEventListener(new ValueEventListener() {
+        databasePeople.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -61,22 +65,34 @@ public class ProfilePageActivity extends AppCompatActivity {
                 tasks.clear();
 
                 //iterating through all the nodes
-                //setting the current user from the task name
+                //setting the current user from the user avatar
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //getting task
-                    Task task = postSnapshot.getValue(Task.class);
+                    User user = postSnapshot.getValue(User.class);
                     //adding task to the list
-                    if(task.getTaskName().equals(currentTaskName)){
-                        currentTask = task;
-                        currentUser = currentTask.getAssignedTo();
+                    if(user.getAvatar().equals(userAvatar)){
+                        currentUser = user;
                     }
                 }
 
-                //adding task to the list iff it's assigned to the current user
+            }
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });//end of addValueEventListener for databasePeople
+
+        databaseTasks.addValueEventListener(new ValueEventListener(){
+             @Override
+             public void onDataChange(DataSnapshot dataSnapshot) {
+                         //adding task to the list iff it's assigned to the current user
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //getting task
                     Task task = postSnapshot.getValue(Task.class);
-                    if(task.getAssignedTo().getName().equals(currentUser.getName())){
+                    if(task.getAssignedTo().equals(currentUser)){
                         tasks.add(task);
                     }
                 }
@@ -87,16 +103,17 @@ public class ProfilePageActivity extends AppCompatActivity {
                 listViewTask.setAdapter(taskAdapter);
 
                 //update the rest of the view
+
                 updateView();
-            }
+             }
+
+             @Override
+             public void onCancelled(DatabaseError databaseError) {
+
+             }
+         });//end of addValueEventListener for databaseTasks
 
 
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });//end of addValueEventListener
 
 
     }//end of onStart
@@ -106,10 +123,10 @@ public class ProfilePageActivity extends AppCompatActivity {
     //values in the profile page xml file activity_profile
     public void updateView(){
 
-        ImageView avatarImageView = (ImageView) findViewById(R.id.avatarImageView);
-        String avtr = currentUser.getAvatar();
-        int resID = this.getResources().getIdentifier(""+avtr, "drawable", this.getPackageName());
-        avatarImageView.setBackgroundResource(resID);
+//        ImageView avatarImageView = (ImageView) findViewById(R.id.avatarImageView);
+//        String avtr = currentUser.getAvatar();
+//        int resID = this.getResources().getIdentifier(""+avtr, "drawable", this.getPackageName());
+//        avatarImageView.setBackgroundResource(resID);
 
     }
 

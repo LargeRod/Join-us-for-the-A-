@@ -50,6 +50,8 @@ public class TasksFragment extends Fragment{
     Task currentTask;
     User currentUser;
     View view;
+    static User selectedUser;
+
 
 
 
@@ -147,6 +149,28 @@ public class TasksFragment extends Fragment{
 
             }
         });//end of addValueEventListener
+
+
+        FirebaseDatabase.getInstance().getReference().child("selectedUser").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //iterating through all the children
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //getting users
+                    User user = postSnapshot.getValue(User.class);
+                    setSelectedUser(user);
+
+                    //adding user to the list
+                }
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }//end of onStart
 
 
@@ -158,13 +182,13 @@ public class TasksFragment extends Fragment{
         if (!TextUtils.isEmpty(name)) {
 
             //getting a unique id using push().getKey() method
-            //it will create a unique id and we will use it as the Primary Key for our Product
+            //it will create a unique id and we will use it as the Primary Key for our Task
             String id = databaseTasks.push().getKey();
 
-            //creating an Product Object
-            Task task = new Task(name, id);
+            //creating an Task Object
+            Task task = new Task(name, id, selectedUser);
 
-            //Saving the Product
+            //Saving the Task
             databaseTasks.child(id).setValue(task);
 
             //setting edittext to blank again
@@ -188,4 +212,10 @@ public class TasksFragment extends Fragment{
         intent.putExtra("passedTaskName",taskName);
         startActivity(intent);
     }
+
+
+    public void setSelectedUser(User u){
+        selectedUser = u;
+    }
+
 }

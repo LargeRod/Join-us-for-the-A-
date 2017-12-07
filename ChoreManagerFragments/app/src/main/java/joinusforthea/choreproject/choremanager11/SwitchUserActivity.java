@@ -84,9 +84,19 @@ public class SwitchUserActivity extends AppCompatActivity{
                     User user = snapshot.getValue(User.class);
                     if(user.getName().equals(userName)){
                         selectedUser = user;
-                        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("selectedUser");
-                        dR.removeValue();
-                        dR.setValue(Task.class);
+                        DatabaseReference  databaseSelectedUser = FirebaseDatabase.getInstance().getReference("selectedUser");
+//                        dR.removeValue();
+//                        dR.setValue(user);
+
+
+                        String id = databaseSelectedUser.push().getKey();
+                        //creating a User Object
+                        //Saving the User
+                        databaseSelectedUser.removeValue();
+                        databaseSelectedUser.child(id).setValue(user);
+
+
+
                     }
                 }
             }

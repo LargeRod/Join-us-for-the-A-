@@ -48,7 +48,9 @@ public class PeopleCustomAdapter extends ArrayAdapter<User> {
             String a = user.get(position).getAvatar();
             int resID = getContext().getResources().getIdentifier(""+a, "drawable", getContext().getPackageName());
             personName.setText(user.get(position).toString());
-            view.findViewById(R.id.avatarImage).setBackgroundResource(resID);
+            ImageView avatarImage = (ImageView) view.findViewById(R.id.avatarImage);
+            avatarImage.setBackgroundResource(resID);
+            avatarImage.setTag(a);
             numTasks.setText("Number of tasks : "+(position*2-position%3));
             nextTask.setText("Next Task: you know what you have to do");
 //        }
