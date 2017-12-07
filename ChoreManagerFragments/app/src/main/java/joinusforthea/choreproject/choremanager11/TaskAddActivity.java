@@ -25,12 +25,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TaskAddActivity extends AppCompatActivity{
 
-    String taskName;
+    static String taskName;
     String taskId;
     Button doneButton;
     DialogFragment dateFragment;
     String dueDate;
-    Task currentTask;
+    static Task currentTask;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +42,11 @@ public class TaskAddActivity extends AppCompatActivity{
         // makes view shift up when keyboard hides layout
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+
+    }
+
+    public void onStart() {
+        super.onStart();
 
 
         doneButton = (Button) findViewById(R.id.doneButton);
@@ -92,8 +97,9 @@ public class TaskAddActivity extends AppCompatActivity{
                     }
                 });
             }
-        });
-    } //end of the onclick listener
+        }); //end of the onclick listener
+    }//end of on start
+
 
 
     private void updateTask(String id) {
@@ -142,5 +148,7 @@ public class TaskAddActivity extends AppCompatActivity{
         Intent intent = new Intent(TaskAddActivity.this, ProfilePageActivity.class);
         startActivity(intent);
     }
+
+
 
 }

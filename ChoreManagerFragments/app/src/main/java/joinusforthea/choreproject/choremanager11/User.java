@@ -26,13 +26,6 @@ class User {
 
     }
 
-
-    public void createTask(String name){
-        //creates a new task and sets the creator as this user
-        Task newTask = new Task(name, this);
-
-    }
-
     //getters
     public String getName() {
         return name;

@@ -26,6 +26,7 @@ public class SwitchUserActivity extends AppCompatActivity{
     ListView listView;
     User selectedUser;
     String userName; //the name of the user selected
+    Task thisTask;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,6 @@ public class SwitchUserActivity extends AppCompatActivity{
         setContentView(R.layout.activity_choose_user);
         peopleArray = new ArrayList<>();
         ((TextView)findViewById(R.id.title)).setText("Switch To...");
-
     }
 
 
@@ -86,7 +86,7 @@ public class SwitchUserActivity extends AppCompatActivity{
                         selectedUser = user;
                         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("selectedUser");
                         dR.removeValue();
-                        dR.setValue(user);
+                        dR.setValue(Task.class);
                     }
                 }
             }
