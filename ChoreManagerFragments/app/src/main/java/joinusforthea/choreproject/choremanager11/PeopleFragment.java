@@ -84,6 +84,11 @@ public class PeopleFragment extends Fragment {
 
             }
         });//end of addValueEventListener
+
+
+
+
+
     }//end of onStart
 
 }

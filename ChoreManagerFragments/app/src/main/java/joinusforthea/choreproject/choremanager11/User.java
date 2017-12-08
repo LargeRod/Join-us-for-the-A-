@@ -18,11 +18,13 @@ class User {
 //    private List<Task> completedTasks = new ArrayList<>();
     private String id;
     private Context context;
+    private int numTasks=0;
 
     public User(String name, String avatar, String id) {
         this.name = name;
         this.avatar = avatar;
         this.id = id;
+        numTasks = getNumTasks();
 
     }
 
@@ -48,20 +50,11 @@ class User {
         return getName();
     }
 
-//    public void addTask(Task task){
-//        currentTasks.add(task);
-//    }
-//
-//    public List<Task> getCurrentTasks(){
-//        return currentTasks;
-//    }
-//
-//    public void completeTask(Task task){
-//        completedTasks.add(task);
-//    }
-//
-//    public List<Task> getCompletedTasks(){
-//        return completedTasks;
-//    }
+    public int getNumTasks() {
+        return numTasks;
+    }
 
+    public void setNumTasks(int numTasks) {
+        this.numTasks = numTasks;
+    }
 }

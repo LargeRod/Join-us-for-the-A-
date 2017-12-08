@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 //TODO @ EMILIE: The app doesnt crash, but i need to work on setting a task creator
 public class MainActivity extends AppCompatActivity
 
@@ -136,7 +135,6 @@ public class MainActivity extends AppCompatActivity
         mViewPager = (ViewPager) findViewById(R.id.container);
         if (id == R.id.nav_open_task) {
             //--------------------set the initial fragment-------------------
-            Toast.makeText(getApplicationContext(), "open task pressed from navigation", Toast.LENGTH_LONG).show();
             mViewPager.setCurrentItem(1);
 
         } else if (id == R.id.nav_shopping_list) {

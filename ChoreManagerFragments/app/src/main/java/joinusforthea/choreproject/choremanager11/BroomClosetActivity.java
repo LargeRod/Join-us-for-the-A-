@@ -100,7 +100,6 @@ public class BroomClosetActivity extends AppCompatActivity {
 
             newItem.setText("");
 
-            Toast.makeText(getApplicationContext(), name, Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(getApplicationContext(), "Please enter an item name", Toast.LENGTH_LONG).show();
         }
@@ -111,14 +110,12 @@ public class BroomClosetActivity extends AppCompatActivity {
         BroomClosetItems items = new BroomClosetItems(id, name);
         dR.setValue(items);
 
-        Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG).show();
     }
 
     public void deleteMaterial(String id) {
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("broomClosesItems").child(id);
         dR.removeValue();
 
-        Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG).show();
     }
 
     private void showUpdateDeleteDialog(final String id, String itemName) {

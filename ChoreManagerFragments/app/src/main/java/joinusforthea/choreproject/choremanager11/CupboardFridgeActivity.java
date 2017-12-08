@@ -99,7 +99,6 @@ public class CupboardFridgeActivity extends AppCompatActivity {
 
             databaseItems.child(id).setValue(item);
 
-            Toast.makeText(this, "added "+id, Toast.LENGTH_SHORT).show();
 
             newItem.setText("");
 
@@ -120,7 +119,7 @@ public class CupboardFridgeActivity extends AppCompatActivity {
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("items").child(id);
         dR.removeValue();
 
-        Toast.makeText(getApplicationContext(), "Deleting "+ dR.getKey(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Deleting", Toast.LENGTH_LONG).show();
     }
 
     private void showUpdateDeleteDialog(final String id, String itemName) {

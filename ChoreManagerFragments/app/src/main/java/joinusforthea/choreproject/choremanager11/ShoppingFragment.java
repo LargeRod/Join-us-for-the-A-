@@ -2,14 +2,13 @@ package joinusforthea.choreproject.choremanager11;
 
 //EV: fragments inspired by Mitch Tabian
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -32,16 +31,25 @@ public class ShoppingFragment extends Fragment {
 
 
 
-    List<String> foodList  = new ArrayList<String>();
+    List<String> groList  = new ArrayList<String>();
     List<String> matList  = new ArrayList<String>();
 
 
     DatabaseReference databaseMaterials;
+    DatabaseReference databaseGroceries;
 
     ListView gridViewMaterials;
-    GridView matGrid;
-    private ImageButton addMaterial;
-    EditText materialEditText;
+    GridView materialGrid;
+    Button doneMaterialButton;
+    EditText newMaterialName;
+    ImageButton newMaterialButton;
+
+    GridView groceryGrid;
+    Button doneGroceryButton;
+    EditText newGroceryName;
+    ImageButton newGroceryButton;
+
+
 
     public ShoppingFragment() {
         // Required empty public constructor
@@ -56,71 +64,45 @@ public class ShoppingFragment extends Fragment {
 
         //Firebase
         databaseMaterials = FirebaseDatabase.getInstance().getReference("materials");
+        databaseGroceries = FirebaseDatabase.getInstance().getReference("groceries");
         matList = new ArrayList<String>();
 
         //populating materials grid
-         matGrid = (GridView) view.findViewById(R.id.materialsGrid);
+         materialGrid  = (GridView) view.findViewById(R.id.materialsGrid);
         CheckboxCustomAdapter matAdapter = new CheckboxCustomAdapter(getActivity(), matList);
-        matGrid.setAdapter(matAdapter);
+        materialGrid.setAdapter(matAdapter);
 
         //populating groceries grid
-        GridView groGrid = (GridView) view.findViewById(R.id.groceriesGrid);
-        CheckboxCustomAdapter groAdapter = new CheckboxCustomAdapter(getActivity(), foodList);
-        groGrid.setAdapter(groAdapter);
+        groceryGrid = (GridView) view.findViewById(R.id.groceriesGrid);
+        CheckboxCustomAdapter groAdapter = new CheckboxCustomAdapter(getActivity(), groList);
+        groceryGrid.setAdapter(groAdapter);
 
-        //edittext of adding a material/grocery
-        materialEditText = (EditText) view.findViewById(R.id.newItemName);
+        //edittext of adding a material
+        newMaterialName = (EditText) view.findViewById(R.id.newMaterialName);
 
-        //adding on click listener for the buttonAddTask button
-        addMaterial = (ImageButton) view.findViewById(R.id.newItemButton);
-        addMaterial.setOnClickListener(new View.OnClickListener() {
+        //edittext of adding a grocery
+        newGroceryName = (EditText) view.findViewById(R.id.newGroceryName);
+
+        //adding on click listener for the newMaterialButton button
+        newMaterialButton = (ImageButton) view.findViewById(R.id.newMaterialButton);
+        newMaterialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(getActivity(), TaskAddActivity.class);
-                //getActivity().startActivity(intent);
                 addMat();
+            }
+        });//end of the onclick listener
+
+        //adding on click listener for the newGroceryButton button
+        newGroceryButton = (ImageButton) view.findViewById(R.id.newGroceryButton);
+        newGroceryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addGro();
             }
         });//end of the onclick listener
 
         return view ;
     }
-//Attempt at implementing popup for choosing Material vs Grocery
-    public void buttonClicked(View view) {
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View alertLayout = inflater.inflate(R.layout.shopping_list_dialogue, null);
-        //final EditText etUsername = alertLayout.findViewById(R.id.testBoy);
-
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-        alert.setTitle("Info");
-        // this is set the view from XML inside AlertDialog
-        alert.setView(alertLayout);
-        // disallow cancel of AlertDialog on click of back button and outside touch
-        alert.setCancelable(false);
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getActivity().getBaseContext(), "Cancel clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        alert.setPositiveButton("Done", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //String user = etUsername.getText().toString();
-
-                Toast.makeText(getActivity().getBaseContext(), "Username: " , Toast.LENGTH_SHORT).show();
-            }
-        });
-        AlertDialog dialog = alert.create();
-        dialog.show();
-    }
-
-
-
-
 
     public void onStart() {
         super.onStart();
@@ -141,10 +123,36 @@ public class ShoppingFragment extends Fragment {
                 }
 
                 //creating adapter
-                //EV: USING NUMBER 2 AS A TEST
                 CheckboxCustomAdapter shopAdapter = new CheckboxCustomAdapter(getActivity(), matList);
                 //attaching adapter to the listview
-                matGrid.setAdapter(shopAdapter);
+                materialGrid.setAdapter(shopAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        databaseGroceries.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //clearing the previous task list?
+                groList.clear();
+
+                //iterating through all the nodes
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //getting grocery
+                    String gro = postSnapshot.getValue().toString();
+                    //adding grocery to the list
+                    groList.add(gro);
+                }
+
+                //creating adapter
+                CheckboxCustomAdapter shopAdapter = new CheckboxCustomAdapter(getActivity(), groList);
+                //attaching adapter to the listview
+                groceryGrid.setAdapter(shopAdapter);
             }
 
             @Override
@@ -155,7 +163,7 @@ public class ShoppingFragment extends Fragment {
     }
     public void addMat() {
         //getting the values to save
-        String name = materialEditText.getText().toString().trim();
+        String name = newMaterialName.getText().toString().trim();
 
         //checking if the value is provided
         if (!TextUtils.isEmpty(name)) {
@@ -171,13 +179,41 @@ public class ShoppingFragment extends Fragment {
             databaseMaterials.child(id).setValue(material);
 
             //setting edittext to blank again
-            materialEditText.setText("");
+            newMaterialName.setText("");
 
             //displaying a success toast
             Toast.makeText(getActivity(), "Material created", Toast.LENGTH_LONG).show();
         } else {
             //if the value is not given displaying a toast
             Toast.makeText(getActivity(), "Please enter a new material name", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void addGro() {
+        //getting the values to save
+        String name = newGroceryName.getText().toString().trim();
+
+        //checking if the value is provided
+        if (!TextUtils.isEmpty(name)) {
+
+            //getting a unique id using push().getKey() method
+            //it will create a unique id and we will use it as the Primary Key for our Product
+            String id = databaseGroceries.push().getKey();
+
+            //creating an Product Object
+            String grocery = new String(name);
+
+            //Saving the Product
+            databaseGroceries.child(id).setValue(grocery);
+
+            //setting edittext to blank again
+            newGroceryName.setText("");
+
+            //displaying a success toast
+            Toast.makeText(getActivity(), "Grocery created", Toast.LENGTH_LONG).show();
+        } else {
+            //if the value is not given displaying a toast
+            Toast.makeText(getActivity(), "Please enter a new grocery name", Toast.LENGTH_LONG).show();
         }
     }
 

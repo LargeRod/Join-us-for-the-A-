@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -82,20 +81,21 @@ public class ProfilePageActivity extends AppCompatActivity {
         });//end of addValueEventListener for databasePeople
 
         databaseTasks.addValueEventListener(new ValueEventListener(){
-             @Override
-             public void onDataChange(DataSnapshot dataSnapshot) {
-                         //adding task to the list iff it's assigned to the current user
+            int currentUserNumTasks=0;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                 //adding task to the list iff it's assigned to the current user
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Task task = postSnapshot.getValue(Task.class);
                     //getting task
                     if(task.getAssignedTo().getName().equals(currentUser.getName())){
                         tasks.add(task);
-
+                        currentUserNumTasks++;
                     }
                 }
 
                 //update the rest of the view
-
+              currentUser.setNumTasks(currentUserNumTasks);
                 updateView();
              }
 

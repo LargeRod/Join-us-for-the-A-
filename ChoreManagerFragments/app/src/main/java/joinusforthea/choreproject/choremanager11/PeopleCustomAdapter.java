@@ -32,7 +32,6 @@ public class PeopleCustomAdapter extends ArrayAdapter<User> {
         TextView personName = (TextView) view.findViewById(R.id.personNameTextView);
         TextView numTasks = (TextView) view.findViewById(R.id.numTasksTextView);
         TextView nextTask = (TextView) view.findViewById(R.id.nextTaskTextView);
-        ImageView avatar = (ImageView) view.findViewById(R.id.avatarImage);
         //only needed when changing the first one to dots
         ImageButton button = (ImageButton) view.findViewById(R.id.chatBubbleImage);
 
@@ -51,8 +50,8 @@ public class PeopleCustomAdapter extends ArrayAdapter<User> {
             ImageView avatarImage = (ImageView) view.findViewById(R.id.avatarImage);
             avatarImage.setBackgroundResource(resID);
             avatarImage.setTag(a);
-            numTasks.setText("Number of tasks : "+(position*2-position%3));
-            nextTask.setText("Next Task: you know what you have to do");
+            numTasks.setText(""+user.get(position).getNumTasks());
+            nextTask.setText("Next Task: not implemented yet");
 //        }
 
 

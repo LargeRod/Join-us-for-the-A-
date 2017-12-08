@@ -13,7 +13,7 @@
     <!-- EV: focusable and focusableInTouchMode stop the app from opening a keyboard when launched-->
 
     <LinearLayout
-        android:id="@+id/topBarLayout"
+        android:id="@+id/addMaterialLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:clickable="true"
@@ -21,7 +21,7 @@
         android:paddingRight="10dp">
 
         <ImageButton
-            android:id="@+id/newItemButton"
+            android:id="@+id/newMaterialButton"
             android:layout_width="50dp"
             android:layout_height="fill_parent"
             android:backgroundTint="@color/CLEAR"
@@ -29,7 +29,7 @@
             app:srcCompat="@drawable/solid_add" />
 
         <EditText
-            android:id="@+id/newItemName"
+            android:id="@+id/newMaterialName"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_weight="1"
@@ -40,7 +40,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat" />
 
         <Button
-            android:id="@+id/doneButton"
+            android:id="@+id/doneMaterialButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/darker_gray"
@@ -73,6 +73,43 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="2dp" />
+
+    <LinearLayout
+        android:id="@+id/addGroceriesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingRight="10dp">
+
+        <ImageButton
+            android:id="@+id/newGroceryButton"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:backgroundTint="@color/CLEAR"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/solid_add" />
+
+        <EditText
+            android:id="@+id/newGroceryName"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="New Item"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/doneGroceryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:text="Done"
+            android:textColor="@color/WHITE" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/groceriesTextView"
