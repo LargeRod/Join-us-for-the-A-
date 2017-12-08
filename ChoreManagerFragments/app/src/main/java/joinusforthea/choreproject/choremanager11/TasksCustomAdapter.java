@@ -3,6 +3,7 @@ package joinusforthea.choreproject.choremanager11;
 /**
  * Created by Miguel Garzón on 2017-05-09.
  */
+
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ public class TasksCustomAdapter extends ArrayAdapter<Task> {
     public View getView(int position, View convertView, ViewGroup parent) {
         //accessing the view
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.custom_task_layout, null, true);
+        View listViewItem = inflater.inflate(R.layout.custom_task_layout, null, false);
 
         TextView choreName = (TextView) listViewItem.findViewById(R.id.choreNameTextView);
 

@@ -26,6 +26,7 @@ public class CreateUserActivity extends AppCompatActivity{
     EditText nameView;
     DatabaseReference databasePeople;
     List<User> peopleArray;
+    List<String> avatarArray;
     ListView listView;
     PeopleCustomAdapter adapter;
     ImageButton[] imageButtons;
@@ -36,6 +37,7 @@ public class CreateUserActivity extends AppCompatActivity{
 
         databasePeople = FirebaseDatabase.getInstance().getReference("users");
         peopleArray = new ArrayList<>();
+        avatarArray = new ArrayList<>();
         adapter = new PeopleCustomAdapter(CreateUserActivity.this,peopleArray);
         setContentView(R.layout.activity_create_user);
 
@@ -76,6 +78,8 @@ public class CreateUserActivity extends AppCompatActivity{
                     User user = postSnapshot.getValue(User.class);
                     //adding user to the list
                     peopleArray.add(user);
+                    //creating a list of the avatars already used to avoid using the same omce twice
+                    avatarArray.add(user.getAvatar());
                 }
             }
 
@@ -84,8 +88,7 @@ public class CreateUserActivity extends AppCompatActivity{
 
             }
         });//end of addValueEventListener
-    }//end of onStart
-
+    }
 
     public void highlightAvatar(View v) {
         for (ImageButton butt: imageButtons) {
@@ -109,7 +112,6 @@ public class CreateUserActivity extends AppCompatActivity{
             case R.id.a3:
                 v.setPadding(0,0,0,0);
                 setSelectedAvatar((ImageButton)v);
-                Toast.makeText(this, "selected a3", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.a4:
                 v.setPadding(0,0,0,0);
@@ -165,11 +167,31 @@ public class CreateUserActivity extends AppCompatActivity{
             //it will create a unique id and we will use it as the Primary Key for our Product
             String id = databasePeople.push().getKey();
             //creating a User Object
-            User u = new User(name, avatar, id);
-            //Saving the User
+            User u = new User(name, "PLACEHOLDER", id);
             databasePeople.child(id).setValue(u);
-            Toast.makeText(this, "added user called " + u.getName() +" with avatar avatar", Toast.LENGTH_SHORT).show();
-            finish();
+            if(contains(avatarArray,avatar)){
+                databasePeople.child(id).removeValue();
+                Toast.makeText(this, "Avatar already in use\nPlease select a different avatar", Toast.LENGTH_LONG).show();
+            }
+            else{
+                //Saving the User
+                User q = new User(name, avatar, id);
+                databasePeople.child(id).setValue(q);
+                Toast.makeText(this, "Created user " + u.getName(), Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+
+
+
         }
     }
+
+    public boolean contains(List<String> list,String s){
+        if(list.contains(s)){
+            return true;
+        }
+        return false;
+    }
+
 }

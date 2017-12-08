@@ -31,6 +31,10 @@ class User {
         return name;
     }
 
+    public void setAvatar(String avatar){
+        this.avatar = avatar;
+    }
+
     public String getAvatar() {
 
         return avatar;

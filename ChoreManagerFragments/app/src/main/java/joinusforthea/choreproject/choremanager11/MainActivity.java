@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 //TODO @ EMILIE: The app doesnt crash, but i need to work on setting a task creator
 public class MainActivity extends AppCompatActivity
@@ -169,20 +170,31 @@ public class MainActivity extends AppCompatActivity
     public void openProfile(View view) {
 
         String avatarTag = null;
+        if(view.getTag().equals("hollow_add")){
+            Intent intent = new Intent(MainActivity.this, ChooseUserActivity.class);
 
-        if (view.getTag().equals("infoTextView")){
+            View parent = (View) view.getParent();
+            TextView choreNameTextView = (TextView)(parent.findViewById(R.id.choreNameTextView));
+            String choreName = choreNameTextView.getText().toString();
+            intent.putExtra("passedTaskName", choreName.toString());
+            startActivity(intent);
+        }
+        else if (view.getTag().equals("infoTextView")){
             //adding on click listener for clicking the task info
             avatarImage = (ImageView) view.findViewById(R.id.avatarImage);
             avatarTag = avatarImage.getTag().toString();
-            Toast.makeText(this, "passing: " + avatarTag, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, ProfilePageActivity.class);
+            intent.putExtra("passedUserInfo", avatarTag);
+            startActivity(intent);
         }
         else{
             avatarTag = view.getTag().toString();
+            Intent intent = new Intent(MainActivity.this, ProfilePageActivity.class);
+            intent.putExtra("passedUserInfo", avatarTag);
+            startActivity(intent);
         }
 
-        Intent intent = new Intent(MainActivity.this, ProfilePageActivity.class);
-        intent.putExtra("passedUserInfo", avatarTag);
-        startActivity(intent);
+
     }
 
     public void openTask(View view) {

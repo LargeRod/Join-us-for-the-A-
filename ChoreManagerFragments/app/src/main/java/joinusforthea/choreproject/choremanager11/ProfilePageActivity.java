@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,27 +23,22 @@ public class ProfilePageActivity extends AppCompatActivity {
     DatabaseReference databasePeople;
     DatabaseReference databaseTasks;
     List<Task> tasks;
-    ListView listViewTask;
     String userAvatar;
-    Task currentTask;
     User currentUser;
+    TasksCustomAdapter taskAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile_page);
         tasks = new ArrayList<>();
-        User currentUser;
         databasePeople = FirebaseDatabase.getInstance().getReference("users");
         databaseTasks = FirebaseDatabase.getInstance().getReference("tasks");
-        listViewTask = (ListView) findViewById(R.id.usersTaskList);
 
 
-        //creating adapter
-        TasksCustomAdapter taskAdapter = new TasksCustomAdapter(ProfilePageActivity.this, tasks);
-        //attaching adapter to the listview
-        listViewTask.setAdapter(taskAdapter);
+
+
     }//end of onCreate()
 
     public void openMessages(View v) {
@@ -52,11 +50,11 @@ public class ProfilePageActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-
         //EV: ONSTART USING TASK NAME TO FIND USER, TERRIBLE IDEA
         //openning from main activity
         userAvatar = getIntent().getStringExtra("passedUserInfo");
         //attaching value event listener
+
         databasePeople.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -77,8 +75,6 @@ public class ProfilePageActivity extends AppCompatActivity {
 
             }
 
-
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -90,17 +86,13 @@ public class ProfilePageActivity extends AppCompatActivity {
              public void onDataChange(DataSnapshot dataSnapshot) {
                          //adding task to the list iff it's assigned to the current user
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //getting task
                     Task task = postSnapshot.getValue(Task.class);
-                    if(task.getAssignedTo().equals(currentUser)){
+                    //getting task
+                    if(task.getAssignedTo().getName().equals(currentUser.getName())){
                         tasks.add(task);
+
                     }
                 }
-
-                //creating adapter
-                TasksCustomAdapter taskAdapter = new TasksCustomAdapter(ProfilePageActivity.this, tasks);
-                //attaching adapter to the listview
-                listViewTask.setAdapter(taskAdapter);
 
                 //update the rest of the view
 
@@ -113,20 +105,28 @@ public class ProfilePageActivity extends AppCompatActivity {
              }
          });//end of addValueEventListener for databaseTasks
 
-
+        
 
 
     }//end of onStart
 
 
     //this method sets the various user specific fields to the proper
-    //values in the profile page xml file activity_profile
+    //values in the profile page xml file activity_profile_page
     public void updateView(){
 
-//        ImageView avatarImageView = (ImageView) findViewById(R.id.avatarImageView);
-//        String avtr = currentUser.getAvatar();
-//        int resID = this.getResources().getIdentifier(""+avtr, "drawable", this.getPackageName());
-//        avatarImageView.setBackgroundResource(resID);
+        ImageView avatarImageView = (ImageView) findViewById(R.id.avatarImageView);
+        String avtr = currentUser.getAvatar();
+        int resID = this.getResources().getIdentifier(""+avtr, "drawable", this.getPackageName());
+        avatarImageView.setBackgroundResource(resID);
+
+        TextView userName = (TextView)findViewById(R.id.userName);
+        userName.setText(currentUser.getName());
+
+
+        ListView userTaskList = (ListView)findViewById(R.id.usersTaskList);
+        taskAdapter = new TasksCustomAdapter(ProfilePageActivity.this, tasks);
+        userTaskList.setAdapter(taskAdapter);
 
     }
 
