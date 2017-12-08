@@ -78,7 +78,7 @@ public class BroomClosetActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 BroomClosetItems material = broomClosetItems.get(i);
-                String id = databaseTasks.child("broomClosesItems").push().getKey();
+                String id = material.getId();
 
                 showUpdateDeleteDialog(id, material.getItemName());
                 return true;

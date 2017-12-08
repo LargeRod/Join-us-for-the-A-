@@ -11,7 +11,6 @@ public class Task  {
     private static DatabaseReference databasePeople  =  FirebaseDatabase.getInstance().getReference("users");
     private static User unassigned = new User("Unassigned","hollow_add",databasePeople.push().getKey());
 
-    private Item[] requiredEquipment;
     private String notes;
     private boolean completed;
     private User creator;
@@ -54,14 +53,6 @@ public class Task  {
 
     public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
-    }
-
-    public Item[] getRequiredEquipment() {
-        return requiredEquipment;
-    }
-
-    public void setRequiredEquipment(Item[] requiredEquipment) {
-        this.requiredEquipment = requiredEquipment;
     }
 
     public String getNotes() {

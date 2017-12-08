@@ -3,36 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/itemLayout"
     android:layout_width="match_parent"
-    android:layout_height="75dp">
+    android:layout_height="wrap_content"
+    android:padding="15dp">
 
-    <Space
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:elevation="0dp" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/circle" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/itemNameTextView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/itemNameTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="left|center_vertical"
-            android:text="Item Name goes here"
-            android:textAppearance="@android:style/TextAppearance" />
-
-        <TextView
-            android:id="@+id/itemFootnoteTextView"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="left|center_vertical" />
-    </LinearLayout>
+        android:gravity="left|center_vertical"
+        android:text="food name goes here"
+        android:textAppearance="@android:style/TextAppearance" />
 
 </LinearLayout>
-
-

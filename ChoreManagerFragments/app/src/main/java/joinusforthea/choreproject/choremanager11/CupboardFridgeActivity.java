@@ -73,13 +73,13 @@ public class CupboardFridgeActivity extends AppCompatActivity {
 
             }
         });
+
         listView = (ListView) findViewById(R.id.foodList);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                CupboardFridgeItems food = products.get(i);
-                String id = databaseItems.child("items").push().getKey();
-                //String id = food.getId(); null for some reason?
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+                CupboardFridgeItems food = products.get(position);
+                String id = food.getId();
 
                 showUpdateDeleteDialog(id, food.getfoodName());
                 return true;
@@ -95,9 +95,11 @@ public class CupboardFridgeActivity extends AppCompatActivity {
 
             String id = databaseItems.push().getKey();
 
-            CupboardFridgeItems item = new CupboardFridgeItems(name);
+            CupboardFridgeItems item = new CupboardFridgeItems(id, name);
 
             databaseItems.child(id).setValue(item);
+
+            Toast.makeText(this, "added "+id, Toast.LENGTH_SHORT).show();
 
             newItem.setText("");
 
@@ -118,7 +120,7 @@ public class CupboardFridgeActivity extends AppCompatActivity {
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("items").child(id);
         dR.removeValue();
 
-        Toast.makeText(getApplicationContext(), "Item deleted", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Deleting "+ dR.getKey(), Toast.LENGTH_LONG).show();
     }
 
     private void showUpdateDeleteDialog(final String id, String itemName) {

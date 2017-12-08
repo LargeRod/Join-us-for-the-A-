@@ -1,7 +1,5 @@
 package joinusforthea.choreproject.choremanager11;
 
-import android.widget.EditText;
-
 /**
  * Created by Digo9 on 2017-12-03.
  */
@@ -15,13 +13,9 @@ public class CupboardFridgeItems {
     }
 
     public CupboardFridgeItems(String id, String foodName) {
-        _id = id;
-        _foodName = foodName;
+        setId(id);
+        setfoodName(foodName);
 
-    }
-
-    public CupboardFridgeItems(String productname){
-        _foodName = productname;
     }
 
     public void setId(String id) {
